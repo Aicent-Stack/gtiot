@@ -1,4 +1,4 @@
-# 🧠 Aicent Stack: The Sovereign AI Nervous System
+# 🟡 gtiot — The Body of Aicent Stack
 
 ⚪ **AICENT**  💎 **RTTP**  🔴 **RPKI**  🟢 **ZCMK**  🟡 **GTIOT** 
 <p align="left">
@@ -6,8 +6,6 @@
   <code> 🦀 Language: Rust </code> &nbsp; 
   <code> 🛡️ Status: EVOLVING </code>
 </p>
-
-# gtiot — The Body of Aicent Stack
 
 ![003](https://github.com/user-attachments/assets/946b620e-8bd0-4e6f-96be-b964a0df3358)
 
