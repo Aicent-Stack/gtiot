@@ -8,8 +8,8 @@ use embassy_time::{Instant, Timer};
 use embassy_sync::channel::Channel;
 use rttp::PulseFrameHeader;
 use rpki::watermark::verify_watermark;
-use zcmk::TokenMicro; 
-use aal::ActionAbstractionLayer;  // on-device collapse engine
+use zcmk::TokenMicro;
+use crate::aal::ActionAbstractionLayer;
 
 #[embassy_executor::task]
 async fn sensory_motor_loop() {
