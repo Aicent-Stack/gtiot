@@ -1,3 +1,5 @@
+**Aicent Stack • Sovereign AI Nervous System**
+
 # 🟡 gtiot — The Body of Aicent Stack
 
 ⚪ **AICENT**  💎 **RTTP**  🔴 **RPKI**  🟢 **ZCMK**  🟡 **GTIOT** 
