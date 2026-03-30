@@ -1,5 +1,7 @@
-//! GTIOT Body Demo
-//! Embodied execution + perception-action closed loop demonstration
+// Aicent Stack | GTIOT (Global Trusted IoT)
+// Specification: RFC-005 Draft (Embodied Reflex)
+// License: Apache-2.0 via Aicent.com Organization.
+//! # RFC-005 Demo: Sensory-Motor Loop Implementation
 
 use gtiot::sensory_motor_loop::SensoryMotorLoop;
 
