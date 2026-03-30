@@ -1,8 +1,15 @@
-// Aicent Stack | GTIOT (Body & Senses)
-// Domain: GTIOT.com
-// Purpose: 1.2 kHz high-frequency sensory-motor loop & Action-Collapse logic.
-// Status: RFC-003 Draft.
-// gtiot/src/sensory_motor_loop.rs — the living limb core
+//! # RFC-005: GTIOT (Global Trusted IoT)
+//! 
+//! The embodied edge and physical reflex system for #AicentStack.
+//! 
+//! ## Core Specifications:
+//! - Embodied execution primitives (Action-Collapse)
+//! - Shadow state synchronization (Digital Twin)
+//! - 1.2 kHz Perception-action loop (High-frequency Reflex)
+//! 
+//! Copyright 2026 Aicent.com Organization.
+//! Licensed under the Apache-2.0 License.
+//! Specification: RFC-005 Draft.
 
 use embassy_time::{Instant, Timer};
 use embassy_sync::channel::Channel;
