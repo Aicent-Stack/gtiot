@@ -1,5 +1,5 @@
 // Aicent Stack | GTIOT (Global Trusted IoT)
-// Domain: https://gtiot.com
+// Domain: http://gtiot.com
 // Purpose: 1.2 kHz High-frequency Reflex & Action-Collapse Logic
 // Specification: RFC-005 Draft. 
 // License: Apache-2.0 via Aicent.com Organization.
