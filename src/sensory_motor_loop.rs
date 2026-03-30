@@ -1,15 +1,9 @@
-//! # RFC-005: GTIOT (Global Trusted IoT)
-//! 
-//! The embodied edge and physical reflex system for #AicentStack.
-//! 
-//! ## Core Specifications:
-//! - Embodied execution primitives (Action-Collapse)
-//! - Shadow state synchronization (Digital Twin)
-//! - 1.2 kHz Perception-action loop (High-frequency Reflex)
-//! 
-//! Copyright 2026 Aicent.com Organization.
-//! Licensed under the Apache-2.0 License.
-//! Specification: RFC-005 Draft.
+// Aicent Stack | GTIOT (Global Trusted IoT)
+// Domain: http://gtiot.com
+// Purpose: 1.2 kHz high-frequency reflex & Action-Collapse logic.
+// Specification: RFC-005 Draft.
+// License: Apache-2.0 via Aicent.com Organization.
+//! # RFC-005: GTIOT Sensory-Motor Reflex
 
 use embassy_time::{Instant, Timer};
 use embassy_sync::channel::Channel;
