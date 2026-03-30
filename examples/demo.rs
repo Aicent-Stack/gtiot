@@ -1,7 +1,9 @@
 // Aicent Stack | GTIOT (Global Trusted IoT)
-// Specification: RFC-005 Draft (Embodied Reflex)
+// Domain: https://gtiot.com
+// Purpose: 1.2 kHz High-frequency Reflex & Action-Collapse Logic
+// Specification: RFC-005 Draft. 
 // License: Apache-2.0 via Aicent.com Organization.
-//! # RFC-005 Demo: Sensory-Motor Loop Implementation
+//! # RFC-005 Demo: Sensory-Motor Closed Loop Implementation
 
 use gtiot::sensory_motor_loop::SensoryMotorLoop;
 
