@@ -1,11 +1,45 @@
 [package]
 name = "gtiot"
+description = "GTIOT: High-Fidelity Edge Fusion and Action-Collapse Framework [RFC-005]"
 version.workspace = true
 edition.workspace = true
 authors.workspace = true
 license.workspace = true
 repository.workspace = true
+homepage = "https://gtiot.com"
+documentation = "https://github.com/Aicent-Stack/manifesto/blob/main/rfcs/RFC-005-GTIOT-BODY.md"
+keywords = ["robotics", "embodied-ai", "rfc-005", "real-time", "edge-computing"]
+categories = ["embedded", "hardware-support", "no-std"]
 
 [dependencies]
+# --- Core Organism Linking ---
+# The Body reacts via Nerves (RTTP), governed by Immunity (RPKI) and Blood (ZCMK)
+rttp.workspace = true
+rpki.workspace = true
+zcmk.workspace = true
+
+# --- Hard Real-Time & Embedded Execution ---
+# Optimized for 1.2 kHz proprioceptive loops
+embassy-executor.workspace = true
+embassy-time.workspace = true
+tokio = { workspace = true, features = ["sync", "macros"] } # Bridge for high-level simulation
+
+# --- Control Theory & Kinetic Primitives ---
+# For Action-Collapse (AAL) and PID drift correction
+nalgebra = { version = "0.32", default-features = false, features = ["libm"] }
+smallvec.workspace = true     # Zero-allocation motor trajectory storage
+
+# --- Perception & Telemetry ---
 serde.workspace = true
 anyhow.workspace = true
+tracing.workspace = true      # High-frequency proprioceptive telemetry
+
+[features]
+default = ["std"]
+std = ["serde/std", "anyhow/std", "rttp/std"]
+# [RFC-005] Bare-metal support for robotics MCUs/NPUs
+no_std = ["nalgebra/libm"]
+
+[dev-dependencies]
+# For simulating 1.2B node grid stress tests
+tokio = { workspace = true, features = ["full"] }
