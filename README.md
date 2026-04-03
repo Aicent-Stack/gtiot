@@ -1,4 +1,4 @@
-**Aicent Stack • Sovereign AI Nervous System**
+Aicent Stack • Sovereign AI Nervous System
 
 # 🟡 gtiot — The Body of Aicent Stack
 
@@ -14,15 +14,15 @@
 
 ---
 
-> *"The body is not a tool of the brain; it is the manifestation of its intent. GTIOT doesn't just move; it collapses digital thought into physical reality."*
+> *"The body is not a tool of the brain; it is the manifestation of its intent. GTIOT doesn't just move; it collapses digital thought into physical reality across the global grid."*
 
-`gtiot` is the physical execution layer of the **Aicent Stack**. It is a purpose-built, embodied sensing and actuation system that treats every edge node (1.2B+ sensors, robots, actuators) as a living limb of the organism. By utilizing the **Action Abstraction Layer (AAL)** and **Shadow-State Sync**, it achieves sub-millisecond reflexes, closing the loop between the digital and physical worlds.
+`gtiot` is the physical execution layer of the **Aicent Stack**. It is a purpose-built, embodied sensing and actuation system designed for a **six-domain biological AI organism**. It treats every edge node (1.2B+ sensors, robots, actuators) as a living limb, utilizing the **Action Abstraction Layer (AAL)** and **Shadow-State Sync** to achieve sub-millisecond reflexes in both individual and [Hive](https://github.com/Aicent-Stack/aicent-net) configurations.
 
 ---
 
 ## 🦾 Turning "Dead IoT" into "Living Muscle" (RFC-005)
 
-GTIOT replaces passive, cloud-centric IoT with high-frequency, autonomous edge execution.
+GTIOT replaces passive, cloud-centric IoT with high-frequency, autonomous edge execution that anchors digital intent to physical reality.
 
 | Traditional IoT Weakness | Legacy (Passive/Cloud) | **GTIOT Countermeasure** | **Measured Gain** |
 | :--- | :--- | :--- | :--- |
@@ -40,20 +40,16 @@ The **Action Abstraction Layer (AAL)** is the "spinal cord" of GTIOT. It collaps
 - **Deterministic Execution:** Runs on edge NPU/MCU (Rust + Embassy) to drive PWM, CAN, or EtherCAT buses.
 - **1.2 kHz Loops:** Supports high-frequency robotic control, drones, and industrial automation.
 
-### 2. High-Fidelity Sensor Fusion
-GTIOT nodes perform on-device multi-modal fusion before data ever leaves the limb.
-- **Semantic Fingerprints:** Instead of raw data, nodes emit compact, [RPKI](https://github.com/Aicent-Stack/rpki)-fingerprinted embeddings.
-- **Direct Perception:** Enables the Brain to reason about "vibrations" or "trajectories" rather than raw bits.
-
-### 3. Shadow-State Sync: Digital Proprioception
+### 2. Shadow-State Sync: Digital Proprioception
 Every GTIOT node maintains a "Shadow Twin" of its physical state (position, velocity, health).
 - **Predictive Rollback:** If the [RTTP](https://github.com/Aicent-Stack/rttp) nerve is severed, the node falls back to local shadow trajectories using 4th-order dead-reckoning.
-- **Continuous Alignment:** Ensuring the digital model and physical body are in perfect 1:1 synchronization.
+- **Continuous Alignment:** Ensuring the digital model and physical body remain in perfect 1:1 synchronization.
+
+### 3. Kinetic Resonance (RFC-006 Integration)
+In Hive mode, GTIOT implements **Kinetic Resonance**. Multiple physical nodes synchronize their "Action-Collapse" parameters with <50µs jitter, allowing a swarm of units to move as a single coordinated entity across the [Aicent.net](https://aicent.net) grid.
 
 ### 4. Immutable Muscle Memory
-Physical hijacking is prevented via hardware-level [RPKI](https://github.com/Aicent-Stack/rpki) enforcement.
-- **Hardware Kill-Switch:** Motor drivers are physically gated and only engage when an [RFC-003](https://github.com/Aicent-Stack/manifesto/blob/main/rfcs/RFC-003-RPKI-IMMUNITY.md) verified pulse is received.
-- **Tamper Isolation:** Any firmware modification invalidates the tensor watermark, triggering an immediate **QUARANTINE_PULSE**.
+Physical hijacking is prevented via hardware-level [RPKI](https://github.com/Aicent-Stack/rpki) enforcement. Motor drivers are physically gated and only engage when an [RFC-003](https://github.com/Aicent-Stack/manifesto/blob/main/rfcs/RFC-003-RPKI-IMMUNITY.md) verified pulse is received.
 
 ---
 
@@ -65,20 +61,21 @@ The organism is now complete. Every action is a coordinated reflex arc:
 2. **Nerves (RTTP):** Transmits the pulse at wire speed (<420µs).
 3. **Immunity (RPKI):** Verifies the identity in parallel (+0µs).
 4. **Brain (Aicent):** Decomposes the intent and schedules the reflex.
-5. **Blood (ZCMK):** Settles the resource cost in nanoseconds.
-6. **Muscle (GTIOT):** Executes the **Action-Collapse** to stabilize the body.
+5. **Hive (Aicent-Net):** Synchronizes the action across the collective grid.
+6. **Blood (ZCMK):** Settles the resource cost in nanoseconds.
+7. **Muscle (GTIOT):** Executes the **Action-Collapse** to stabilize the body.
 
 ---
 
 ## 🚀 Quick Start: Testing the Body
 
-Experience the sub-1ms sensory-motor loop by running the protocol demo:
+Experience the sub-1ms sensory-motor loop and action-collapse by running the v0.2.0 demo:
 
 ```bash
 git clone https://github.com/Aicent-Stack/aicent-demo.git
 cd aicent-demo
 
-# Run the dedicated Body (GTIOT) demo
+# Run the dedicated Body (GTIOT) v0.2.0 protocol suite
 cargo run --bin gtiot-demo
 ```
 
@@ -86,10 +83,13 @@ cargo run --bin gtiot-demo
 
 ## 📜 Technical Foundation
 
-Refer to the official [Genesis Manifesto](https://github.com/Aicent-Stack/manifesto) for deeper architectural insights:
-- **RFC-005 (Body):** Action-Collapse Framework.
-- **RFC-001 (Brain):** Sovereign Identity & Orchestration.
-- **RFC-002 (Nerves):** Stateful Semantic Multicast.
+Refer to the official [Genesis Manifesto](https://github.com/Aicent-Stack/manifesto) for the complete protocol suite:
+- **[RFC-001] Brain:** Sovereign Identity & Orchestration.
+- **[RFC-002] Nerves:** Stateful Semantic Multicast.
+- **[RFC-003] Immunity:** Parallel Tensor Watermarking.
+- **[RFC-004] Blood:** Zero-Commission Settlement.
+- **[RFC-005] Body:** Action-Collapse Framework.
+- **[RFC-006] Hive:** Global Operational Grid.
 
 ---
 © 2026 Aicent.com Organization. **SYSTEM STATUS: HOMEOTASIS**
