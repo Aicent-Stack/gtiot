@@ -46,7 +46,7 @@ Every GTIOT node maintains a "Shadow Twin" of its physical state (position, velo
 - **Continuous Alignment:** Ensuring the digital model and physical body remain in perfect 1:1 synchronization.
 
 ### 3. Kinetic Resonance (RFC-006 Integration)
-In Hive mode, GTIOT implements **Kinetic Resonance**. Multiple physical nodes synchronize their "Action-Collapse" parameters with <50µs jitter, allowing a swarm of units to move as a single coordinated entity across the [Aicent.net](https://aicent.net) grid.
+In Hive mode, GTIOT implements **Kinetic Resonance**. Multiple physical nodes synchronize their "Action-Collapse" parameters with <50µs jitter, allowing a swarm of units to move as a single coordinated entity across the [Aicent.net](http://aicent.net) grid.
 
 ### 4. Immutable Muscle Memory
 Physical hijacking is prevented via hardware-level [RPKI](https://github.com/Aicent-Stack/rpki) enforcement. Motor drivers are physically gated and only engage when an [RFC-003](https://github.com/Aicent-Stack/manifesto/blob/main/rfcs/RFC-003-RPKI-IMMUNITY.md) verified pulse is received.
