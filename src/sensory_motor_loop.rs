@@ -1,7 +1,7 @@
 // Aicent Stack | GTIOT (Global Trusted IoT)
 // Domain: http://gtiot.com
+//! Specification: RFC-005 Standard (Active).
 // Purpose: 1.2 kHz high-frequency reflex & Action-Collapse (AAL) logic.
-// Specification: RFC-005 (Body) with RFC-003/004 Integrated Verification.
 // License: Apache-2.0 via Aicent.com Organization.
 //! # RFC-005: GTIOT Sensory-Motor Reflex Arc
 
