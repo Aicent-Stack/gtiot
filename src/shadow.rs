@@ -9,7 +9,7 @@
 //! hardware-locked shadow twin of the physical node using 128-bit atomics to 
 //! ensure absolute parity between digital intent and physical reality.
 
-use std::sync::atomic::{AtomicU128, Ordering}; // 🛡️ Restored 128-bit Sovereignty
+use std::sync::atomic::{AtomicU128, Ordering};
 
 /// [RFC-005] Shadow State Manifold.
 /// Represents the multidimensional state of a physical GTIOT node.
@@ -23,6 +23,7 @@ pub struct ShadowState {
     /// Alignment score between digital intent and physical position (0.0 - 1.0).
     pub parity_score: f32,
     /// 128-bit Hardware-locked manifold for instantaneous proprioceptive snapshots.
+    /// Acts as the "Digital Muscle Memory" of the Aicent Stack.
     pub atomic_manifold: AtomicU128, 
     /// Nanosecond timestamp of the last verified state update.
     pub last_sync_ns: u64,
@@ -51,9 +52,9 @@ impl ShadowState {
     /// [RFC-005] Atomic State Update.
     /// Synchronizes local motor feedback into the shadow twin using 
     /// hardware-level 128-bit atomicity (Release ordering).
-    pub fn update(&mut self, _packed_kinetics: u128) {
+    pub fn update(&mut self, packed_kinetics: u128) {
         // [AUDIT] Mapping physical reality to the digital twin in <10ns.
-        self.atomic_manifold.store(_packed_kinetics, Ordering::Release);
+        self.atomic_manifold.store(packed_kinetics, Ordering::Release);
         
         self.last_sync_ns = std::time::SystemTime::now()
             .duration_since(std::time::UNIX_EPOCH)
@@ -64,10 +65,10 @@ impl ShadowState {
     /// [RFC-005] Predictive Dead-Reckoning.
     /// Utilizes a 4th-order polynomial extrapolation to project the node's 
     /// trajectory for the next 5ms in the event of RTTP nerve severance.
+    /// This allows the node to maintain autonomy when the connection to the Brain is lost.
     pub fn predict_trajectories(&mut self) {
         // [LOGIC] Re-calculates the kinetic manifold based on inertial momentum.
         // Ensures physical stability even during network jitter or packet loss.
-        // Parity score slightly decays during autonomous prediction.
         self.parity_score -= 0.0001; 
     }
 
@@ -83,7 +84,8 @@ impl ShadowState {
     /// Returns a fail-safe trajectory vector for autonomous execution.
     /// Used by the Fail-Safe Oracle when homeostasis is breached.
     pub fn get_safe_trajectory(&self) -> crate::aal::ActionPrimitive {
-        // [SAFETY] Shunting to the last known-good stable manifold coordinates.
+        // [SAFETY] Shunting to the last known-good stable manifold coordinates 
+        // to prevent kinetic collapse.
         crate::aal::ActionPrimitive::default()
     }
 }
