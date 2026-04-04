@@ -10,7 +10,7 @@ homepage = "http://gtiot.com"
 documentation = "https://github.com/Aicent-Stack/manifesto/blob/main/rfcs/RFC-005-GTIOT-BODY.md"
 keywords = ["robotics", "embodied-ai", "rfc-005", "action-collapse", "proprioception", "128-bit-atomic"]
 categories = ["embedded", "hardware-support", "no-std", "science"]
-rust-version = "1.75"
+rust-version = "1.85"
 
 [dependencies]
 # --- Core Organism Linking (The Reflex Arc) ---
