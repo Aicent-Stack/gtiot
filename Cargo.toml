@@ -37,13 +37,6 @@ tracing   = { workspace = true } # High-fidelity proprioceptive telemetry
 once_cell = { workspace = true } # Global state manifold initialization
 tokio     = { workspace = true, features = ["sync", "rt"] } # Simulation bridge
 
-[features]
-default = ["std"]
-# [Standard v1.0] Standard library support for high-end edge compute nodes
-std = ["serde/std", "anyhow/std", "rttp/std"]
-# [RFC-005] Bare-metal support for industrial robotics (MCUs/NPUs)
-no_std = ["nalgebra/libm"]
-
 [dev-dependencies]
 # Benchmarking for the 200µs Action-Collapse performance target
 criterion = { workspace = true }
