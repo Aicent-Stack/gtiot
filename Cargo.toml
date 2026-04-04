@@ -1,6 +1,6 @@
 [package]
 name = "gtiot"
-description = "GTIOT: High-Fidelity Edge Fusion Framework [RFC-005]"
+description = "GTIOT: High-Fidelity Edge Fusion and Action-Collapse Framework [RFC-005]"
 version.workspace = true
 edition.workspace = true
 authors.workspace = true
@@ -8,15 +8,15 @@ license.workspace = true
 repository.workspace = true
 
 [dependencies]
-# 🛡️ Core fix: Removed the aicent dependency; it only handles interactions with transport, security, and blood.
 rttp.workspace = true
 rpki.workspace = true
 zcmk.workspace = true
 
-# --- Embedded Logic ---
+# --- Hard Real-Time Execution ---
 embassy-executor.workspace = true
 embassy-time.workspace = true
 smallvec.workspace = true
+once_cell.workspace = true
 serde.workspace = true
 anyhow.workspace = true
 tracing.workspace = true
