@@ -8,9 +8,12 @@ license.workspace = true
 repository.workspace = true
 
 [dependencies]
+# 🛡️ Core fix: Removed the aicent dependency; it only handles interactions with transport, security, and blood.
 rttp.workspace = true
 rpki.workspace = true
 zcmk.workspace = true
+
+# --- Embedded Logic ---
 embassy-executor.workspace = true
 embassy-time.workspace = true
 smallvec.workspace = true
