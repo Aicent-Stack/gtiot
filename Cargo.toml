@@ -2,24 +2,24 @@
 name = "gtiot"
 description = "GTIOT: High-Fidelity Edge Fusion and Action-Collapse Framework [RFC-005]"
 version.workspace = true
-edition.workspace = true
-authors.workspace = true
-license.workspace = true
-repository.workspace = true
+edition = "2024" # Explicitly set edition to 2024 for consistency
+authors = ["Aicent Stack Team <lee@aicent.com>"]
+license = "Apache-2.0"
+repository = "https://github.com/Aicent-Stack/gtiot" # Point to its own repository
 homepage = "http://gtiot.com"
 documentation = "https://github.com/Aicent-Stack/manifesto/blob/main/rfcs/RFC-005-GTIOT-BODY.md"
 keywords = ["robotics", "embodied-ai", "rfc-005", "action-collapse", "proprioception", "128-bit-atomic"]
 categories = ["embedded", "hardware-support", "no-std", "science"]
-rust-version = "1.85"
+rust-version = "1.85" # Explicitly set rust-version to 1.85 for consistency
 
 [dependencies]
-# --- Core Organism Linking (The Reflex Arc) ---
-# The Body is physically gated by Immunity (RPKI) and Blood (ZCMK) via Nerves (RTTP)
+# --- Core Organism Linking (Unidirectional Dependency Flow) ---
+# The Body reacts to Nerves (RTTP) and requires Immunity (RPKI) and Blood (ZCMK)
 rttp = { workspace = true }
 rpki = { workspace = true }
 zcmk = { workspace = true }
 
-# --- Hard Real-Time & Physical Execution ---
+# --- Hard Real-Time & Embedded Execution ---
 # [RFC-005] Embassy executor for sub-millisecond control loops (1200 Hz)
 embassy-executor = { workspace = true }
 embassy-time     = { workspace = true }
@@ -36,6 +36,14 @@ anyhow    = { workspace = true }
 tracing   = { workspace = true } # High-fidelity proprioceptive telemetry
 once_cell = { workspace = true } # Global state manifold initialization
 tokio     = { workspace = true, features = ["sync", "rt"] } # Simulation bridge
+
+[features]
+default = ["std"]
+# [Standard v1.0] Standard library support for high-end edge compute nodes.
+# Explicitly re-exporting std for all downstream dependencies for full compatibility.
+std = ["serde/std", "anyhow/std", "rttp/std", "rpki/std", "zcmk/std", "tokio/rt", "tokio/sync"]
+# [RFC-005] Bare-metal support for industrial robotics (MCUs/NPUs)
+no_std = ["nalgebra/libm"]
 
 [dev-dependencies]
 # Benchmarking for the 200µs Action-Collapse performance target
