@@ -6,18 +6,40 @@ edition.workspace = true
 authors.workspace = true
 license.workspace = true
 repository.workspace = true
+homepage = "https://gtiot.com"
+documentation = "https://github.com/Aicent-Stack/manifesto/blob/main/rfcs/RFC-005-GTIOT-BODY.md"
+keywords = ["robotics", "edge-computing", "rfc-005", "action-collapse", "proprioception"]
+categories = ["embedded", "hardware-support", "no-std"]
+rust-version = "1.75"
 
 [dependencies]
+# --- Core Organism Linking ---
+# The Body reacts to the Nerves (RTTP) and requires Immunity (RPKI) and Blood (ZCMK)
 rttp.workspace = true
 rpki.workspace = true
 zcmk.workspace = true
 
-# --- Hard Real-Time Execution ---
+# --- Hard Real-Time & Physical Execution ---
+# [RFC-005] Embassy executor for sub-ms control loops (1.2 kHz)
 embassy-executor.workspace = true
 embassy-time.workspace = true
+# [PERF] Zero-allocation motor trajectory storage
 smallvec.workspace = true
-once_cell.workspace = true
-serde.workspace = true
+# [PHYSICS] Linear algebra for 12-DOF robotics and motor torque vectors
+nalgebra = { version = "0.32", default-features = false, features = ["libm"] }
+
+# --- Logic & Telemetry ---
+serde = { workspace = true, features = ["derive"] }
 anyhow.workspace = true
-tracing.workspace = true
-tokio = { workspace = true, features = ["sync"] }
+tracing.workspace = true       # High-fidelity somatic telemetry
+once_cell.workspace = true
+tokio = { workspace = true, features = ["sync"] } # Simulation bridge
+
+[features]
+default = ["std"]
+std = ["serde/std", "anyhow/std", "rttp/std"]
+# [RFC-005] Bare-metal support for robotics MCUs/NPUs
+no_std = ["nalgebra/libm"]
+
+[dev-dependencies]
+criterion = "0.5" # Benchmarking 1.2 kHz reflex loops
