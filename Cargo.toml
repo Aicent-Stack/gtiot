@@ -1,55 +1,66 @@
 [package]
 name = "gtiot"
 description = "GTIOT: High-Fidelity Edge Fusion and Action-Collapse Framework [RFC-005]"
+# Inheriting core protocol DNA from the imperial root workspace
 version.workspace = true
 edition.workspace = true
 authors.workspace = true
 license.workspace = true
-repository = "https://github.com/Aicent-Stack/gtiot" # Points to its own independent repository
+repository.workspace = true
 homepage = "http://gtiot.com"
 documentation = "https://github.com/Aicent-Stack/manifesto/blob/main/rfcs/RFC-005-GTIOT-BODY.md"
+rust-version.workspace = true
+
+# Keywords and categories for embodied intelligence and robotics authority
 keywords = ["robotics", "embodied-ai", "rfc-005", "action-collapse", "proprioception", "128-bit-atomic"]
-categories = ["embedded", "hardware-support", "no-std", "science"]
-rust-version.workspace = true # Explicitly inherit rust-version for consistency
+categories = ["embedded", "hardware-support", "no-std", "science", "aerospace"]
 
 [dependencies]
 # --- Core Organism Linking (Unidirectional Dependency Flow) ---
-# The Body reacts to Nerves (RTTP) and requires Immunity (RPKI) and Blood (ZCMK)
-rttp = { workspace = true }
-rpki = { workspace = true }
-zcmk = { workspace = true }
+# The Body reacts to Nerves (RTTP) gated by Immunity (RPKI) and Blood (ZCMK).
+# Explicitly enable 'std' features to ensure full protocol parity in edge clusters.
+rttp = { workspace = true, features = ["std"] }
+rpki = { workspace = true, features = ["std"] }
+zcmk = { workspace = true, features = ["std"] }
 
-# --- Hard Real-Time & Embedded Execution ---
-# [RFC-005] Embassy executor for sub-millisecond control loops (1200 Hz)
+# --- Hard Real-Time & Physical Execution (1.2 kHz Loops) ---
+# Utilizing the Embassy ecosystem for deterministic task scheduling.
 embassy-executor = { workspace = true }
 embassy-time     = { workspace = true }
 
-# --- Kinetic Primitives & Mathematics ---
-# [PHYSICS] Linear algebra for 12-DOF kinematics and motor torque vectors
+# --- Kinetic Primitives & Mathematics (The Spinal Cord) ---
+# [PHYSICS] Linear algebra for 12-DOF kinematics and motor torque vectors.
 nalgebra = { workspace = true }
-# [PERF] Zero-allocation storage for high-frequency motor trajectories
+# [PERF] Zero-allocation storage for high-frequency motor trajectories.
 smallvec = { workspace = true }
 
 # --- Logic, State & Telemetry ---
 serde     = { workspace = true, features = ["derive"] }
 anyhow    = { workspace = true }
 tracing   = { workspace = true } # High-fidelity proprioceptive telemetry
-once_cell = { workspace = true } # Global state manifold initialization
-tokio     = { workspace = true } # Simulation bridge
+once_cell = { workspace = true } # Safe static initialization of hardware buses
+tokio     = { workspace = true, features = ["sync", "rt"] } # Simulation/Bridge layer
 
 [features]
+# Standard implementation: Optimized for high-end robotic compute nodes.
 default = ["std"]
-# [Standard v1.0] Standard library support for high-end edge compute nodes.
-# Explicitly re-exporting 'std' for internal Aicent Stack dependencies to avoid cyclic feature conflicts.
+
+# [Standard v1.0] Standard library support for general-purpose compute.
+# Re-exports 'std' for internal Aicent Stack dependencies to prevent feature fragmentation.
 std = [
+    "serde/std", 
+    "anyhow/std", 
     "rttp/std", 
     "rpki/std", 
-    "zcmk/std"
+    "zcmk/std", 
+    "tokio/rt", 
+    "tokio/sync"
 ]
 
-# [RFC-005] Bare-metal support for industrial robotics (MCUs/NPUs)
+# [RFC-005] Bare-metal support for industrial robotics (MCUs/NPUs).
+# Disables std and utilizes libm for complex kinetic calculations.
 no_std = ["nalgebra/libm"]
 
 [dev-dependencies]
-# Benchmarking for the 200µs Action-Collapse performance target
-criterion = { workspace = true }
+# Performance benchmarking for the 200µs Action-Collapse finality target.
+criterion = { workspace = true, features = ["async_tokio"] }
