@@ -6,49 +6,48 @@ version.workspace = true
 edition.workspace = true
 authors.workspace = true
 license.workspace = true
-repository.workspace = true
+repository = "https://github.com/Aicent-Stack/gtiot"
 homepage = "http://gtiot.com"
 documentation = "https://github.com/Aicent-Stack/manifesto/blob/main/rfcs/RFC-005-GTIOT-BODY.md"
 rust-version.workspace = true
 
-# Keywords and categories for embodied intelligence and robotics authority
+# Keywords and categories for industrial robotics and aerospace authority
 keywords = ["robotics", "embodied-ai", "rfc-005", "action-collapse", "proprioception", "128-bit-atomic"]
 categories = ["embedded", "hardware-support", "no-std", "science", "aerospace"]
 
 [dependencies]
 # --- Core Organism Linking (Unidirectional Dependency Flow) ---
-# The Body reacts to Nerves (RTTP) and is gated by Immunity (RPKI) and Blood (ZCMK).
-# All dependencies explicitly enable 'std' features for integrated edge compute nodes.
+# The Body layer consumes pulses from Nerves (RTTP) and requires 
+# security clearance from Immunity (RPKI) and Blood (ZCMK).
+# 🛡️ THE ARCHITECTURAL LOCK: Decoupled from Brain (aicent) to break cyclic deadlocks.
 rttp = { workspace = true, features = ["std"] }
 rpki = { workspace = true, features = ["std"] }
 zcmk = { workspace = true, features = ["std"] }
 
-# --- Hard Real-Time & Physical Execution (1.2 kHz Loops) ---
+# --- Hard Real-Time & Physical Execution (1.2 kHz Standard) ---
 # Utilizing the Embassy ecosystem for deterministic task scheduling without OS jitter.
 embassy-executor = { workspace = true }
 embassy-time     = { workspace = true }
 
-# --- Kinetic Primitives & Mathematics (The Spinal Cord) ---
-# [PHYSICS] Linear algebra for 12-DOF kinematics and motor torque vectors.
+# --- Kinetic Primitives & Mathematics (The Digital Spine) ---
+# [PHYSICS] Linear algebra for 12-DOF kinematics and 128-bit torque manifolds.
 nalgebra = { workspace = true }
 # [PERF] Zero-allocation storage for high-frequency motor trajectories.
-# Note: smallvec does not possess an 'std' feature; used as-is for stack-allocation.
-smallvec = { workspace = true }
+smallvec = { workspace = true, features = ["serde"] }
 
 # --- Logic, State & Telemetry ---
 serde     = { workspace = true, features = ["derive"] }
 anyhow    = { workspace = true }
-tracing   = { workspace = true } # High-fidelity proprioceptive telemetry for audit trails
+tracing   = { workspace = true } # High-fidelity proprioceptive telemetry
 once_cell = { workspace = true } # Safe static initialization of 128-bit manifolds
-tokio     = { workspace = true, features = ["sync", "rt"] } # Simulation bridge for CI environments
+tokio     = { workspace = true, features = ["sync", "rt"] } # Simulation bridge for CI/CD
 
 [features]
-# Standard implementation: Optimized for high-end robotic compute clusters.
+# Standard implementation: Optimized for high-end industrial edge clusters.
 default = ["std"]
 
 # [Standard v1.0] Standard library support for the embodied execution layer.
-# 🛡️ FIX: Explicitly excluded 'smallvec/std' as it does not exist.
-# Re-exports 'std' for internal Aicent Stack dependencies to avoid feature drift.
+# Explicitly re-exporting 'std' for internal Aicent Stack dependencies to ensure homeostasis.
 std = [
     "serde/std", 
     "anyhow/std", 
@@ -60,7 +59,7 @@ std = [
 ]
 
 # [RFC-005] Bare-metal support for industrial robotics (MCUs/NPUs).
-# Disables std and utilizes libm for complex kinetic reduction.
+# Disables standard library and utilizes hardware-specific floating point logic.
 no_std = ["nalgebra/libm"]
 
 [dev-dependencies]
