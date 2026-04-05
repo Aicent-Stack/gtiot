@@ -28,6 +28,7 @@ pub async fn sensory_motor_loop() {
     let mut hive_sync = KineticResonance::new();     
     let motor_primitive = ActionPrimitive::default();
     
+    #[cfg(debug_assertions)]
     log_gtiot("Body Homeostasis Initialized. RFC-005 Standard Active.");
 
     let mut last_pulse_time = Instant::now();
@@ -78,8 +79,8 @@ pub async fn sensory_motor_loop() {
             let brain_intent = crate::parser::parse_intent_stub(payload);
             let packed_kinetics = aal.collapse(brain_intent, &shadow_state);
 
-            // 🟣 [RFC-006] Hive Kinetic Alignment (Collective Intelligence)
-            // Phase-locking the local trajectory with the global Hive resonance vector.
+            // 🟣 [RFC-006] Hive Kinetic Alignment (Collective Resonance)
+            // Phase-locking the local trajectory with the collective swarm resonance.
             let aligned_kinetics = if cmd_header.flags & 0b1000 != 0 {
                 hive_sync.align_with_swarm_u128(packed_kinetics)
             } else {
@@ -93,7 +94,7 @@ pub async fn sensory_motor_loop() {
             last_pulse_time = Instant::now();
 
             // --- PHASE 4: PROPRIOCEPTIVE SYNC ---
-            // Update local shadow twin and predict next 5 trajectories using 4th-order dead-reckoning.
+            // Update local shadow twin and predict next 5 trajectories.
             shadow_state.update(aligned_kinetics);
             shadow_state.predict_trajectories(); 
         }
@@ -101,12 +102,15 @@ pub async fn sensory_motor_loop() {
         // --- PHASE 5: FAIL-SAFE AUTONOMY ---
         // If the RTTP nerve connection is severed (>3ms), fallback to safe shadow-trajectory.
         if Instant::now() - last_pulse_time > Duration::from_millis(3) {
-            log_gtiot("Neural sever detected. Fail-safe Oracle engaged.");
             let safe_action = shadow_state.get_safe_trajectory();
-            crate::hw::execute_actuators_direct(&safe_action.torque_vectors);
+            // 🛡️ FIX: Calling torque_vectors() method instead of field access.
+            crate::hw::execute_actuators_direct(&safe_action.torque_vectors());
+            
+            #[cfg(debug_assertions)]
+            log_gtiot("Neural sever detected. Fail-safe Oracle engaged.");
         }
 
-        // Loop frequency calibration: 833µs fixed interval for 1.2 kHz resonance.
+        // Cycle Calibration: 833µs fixed interval for 1.2 kHz resonance.
         Timer::after_micros(833).await;
     }
 }
