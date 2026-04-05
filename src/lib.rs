@@ -10,29 +10,29 @@
 //! into deterministic motor primitives at a 1.2 kHz operational frequency.
 //!
 //! ### Core Body Logic:
-//! - **Action-Collapse (AAL)**: Converting symbolic intent into physical torque vectors in <200µs.
+//! - **Action-Collapse (AAL)**: Converting symbolic intent into 128-bit torque vectors in <200µs.
 //! - **Proprioceptive Homeostasis**: 1200Hz sampling loop for real-time sensor fusion.
-//! - **Shadow-State Sync**: Maintaining 1:1 digital-physical parity via RTTP neural deltas.
+//! - **Shadow-State Sync**: Maintaining 1:1 parity via RTTP neural deltas.
 //! - **Kinetic Resonance**: Synchronizing swarm movements via Aicent.net Hive (RFC-006).
 
 #![deny(missing_docs)]
-// SAFETY: Unsafe is strictly constrained to sub-nanosecond direct hardware I/O, 
-// DMA mappings, and bitwise manifold unpacking for robotic servos.
+// SAFETY: Unsafe is used exclusively for sub-nanosecond direct hardware I/O, 
+// DMA memory mappings, and bitwise manifold unpacking for robotic servos.
 #![allow(unsafe_code)]
 
-/// [RFC-005] High-frequency sensory motor loop.
+/// [RFC-005] High-frequency sensory-motor execution loop.
 pub mod sensory_motor_loop;
-/// [RFC-005] Action Abstraction Layer primitives for motor torque conversion.
+/// [RFC-005] Action Abstraction Layer (AAL) for kinetic reduction.
 pub mod aal;
-/// [RFC-005] 128-bit digital twin shadow-state management.
+/// [RFC-005] 128-bit Digital Twin and Shadow-State management.
 pub mod shadow;
 /// [RFC-005] NPU-accelerated multi-modal sensor fusion.
 pub mod fusion;
-/// [RFC-006] Hive-scale kinetic resonance alignment.
+/// [RFC-006] Hive-scale kinetic resonance and swarm alignment.
 pub mod resonance;
 /// [RFC-005] Hardware-level bus drivers (PWM/CAN) and security kill-switches.
 pub mod hw;
-/// [RFC-001] Cognitive intent de-sharding parser.
+/// [RFC-001] Cognitive intent de-sharding and command parsing.
 pub mod parser;
 
 pub use crate::sensory_motor_loop::sensory_motor_loop;
@@ -44,9 +44,9 @@ pub use crate::sensory_motor_loop::sensory_motor_loop;
 pub enum BodyError {
     /// Action-Collapse mathematics failed to converge within the 200µs limit.
     KineticConvergenceTimeout,
-    /// Divergence between the digital shadow-state and physical reality exceeded safe limits.
+    /// Divergence between the digital shadow-state and physical reality exceeds safe threshold.
     ProprioceptiveDrift,
-    /// Inbound command rejected at the hardware gate (RPKI RFC-003 pathogen detected).
+    /// Inbound command rejected at the hardware gate (RPKI pathogen detected).
     PathogenInterference,
     /// Neural spine connection severed (>3ms timeout), triggering autonomous dead-reckoning.
     NeuralNervesSevered,
@@ -60,7 +60,7 @@ pub enum BodyError {
 pub struct ProprioceptiveState {
     /// Fused multi-modal sensor manifold: [IMU | Vibration | Thermal | Vision].
     pub sensory_fingerprint: [f32; 16],
-    /// Semantic Hash representation of the current physical pose.
+    /// 64-bit Semantic Hash representation of the current physical pose.
     pub semantic_hash: u64,
     /// Alignment score between digital intent and physical position (0.0 - 1.0).
     pub shadow_parity: f32,
@@ -69,23 +69,23 @@ pub struct ProprioceptiveState {
 }
 
 impl ProprioceptiveState {
-    /// Helper to extract the semantic hash for RTTP routing.
+    /// Helper to extract the semantic hash for RTTP neural routing (RFC-002).
     pub fn semantic_hash(&self) -> u64 {
         self.semantic_hash
     }
     
-    /// Helper to extract the sensory payload.
+    /// Helper to serialize the sensory state for RTTP payload ingestion.
     pub fn as_bytes(&self) -> Vec<u8> {
-        // [PERF] In production, this returns a compressed semantic embedding.
+        // [PERF] In production, this returns a bit-compressed semantic embedding.
         vec![0u8; 64]
     }
 }
 
 /// [RFC-005] Embodied Limb Interface.
 /// Defines the strict behavioral contract of a physical execution unit.
-/// Any hardware (Robot, Drone, Actuator) joining the Aicent Stack must implement this.
+/// Any hardware (Robot, Drone, Actuator) joining the Aicent Stack must implement this trait.
 pub trait EmbodiedLimb {
-    /// Ingests raw hardware data and produces a condensed semantic fingerprint.
+    /// Ingests raw hardware data and produces a condensed proprioceptive state.
     fn perceive(&self) -> Result<ProprioceptiveState, BodyError>;
 
     /// Executes a collapsed action primitive on the physical substrate.
@@ -98,14 +98,14 @@ pub trait EmbodiedLimb {
 
 // --- Protocol Anchors & Performance Limits ---
 
-/// [Standard v1.0] Fixed physical sampling rate required for RFC-005 compliance.
+/// [Standard v1.0] Fixed physical sampling rate required for RFC-005 compliance (1200 Hz).
 pub const SAMPLING_RATE_HZ: u32 = 1200;
-/// [Standard v1.0] The absolute maximum time threshold for intent-to-actuation conversion.
+/// [Standard v1.0] The maximum allowable time for intent-to-actuation conversion (200µs).
 pub const ACTION_COLLAPSE_TARGET_US: u32 = 200;
 /// [Standard v1.0] The current active version of the GTIOT protocol.
 pub const PROTOCOL_VERSION: &str = "1.0.0-standard-active";
 
-/// High-fidelity telemetry marker for physical actuation events.
+/// High-fidelity telemetry marker for physical actuation and proprioception events.
 pub fn log_body_event(msg: &str) {
     println!("\x1b[1;33m[GTIOT-BODY]\x1b[0m 🦾 {}", msg);
 }
