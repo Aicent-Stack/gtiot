@@ -6,40 +6,41 @@ version.workspace = true
 edition.workspace = true
 authors.workspace = true
 license.workspace = true
-repository = "https://github.com/Aicent-Stack/gtiot"
+repository.workspace = true
 homepage = "http://gtiot.com"
 documentation = "https://github.com/Aicent-Stack/manifesto/blob/main/rfcs/RFC-005-GTIOT-BODY.md"
 rust-version.workspace = true
 
-# Keywords and categories for industrial robotics and aerospace authority
+# Keywords and categories for embodied intelligence and robotics authority
 keywords = ["robotics", "embodied-ai", "rfc-005", "action-collapse", "proprioception", "128-bit-atomic"]
 categories = ["embedded", "hardware-support", "no-std", "science", "aerospace"]
 
 [dependencies]
 # --- Core Organism Linking (Unidirectional Dependency Flow) ---
-# The Body layer consumes pulses from Nerves (RTTP) and requires 
-# security clearance from Immunity (RPKI) and Blood (ZCMK).
+# The Body reacts to Nerves (RTTP) gated by Immunity (RPKI) and Blood (ZCMK).
 # 🛡️ THE ARCHITECTURAL LOCK: Decoupled from Brain (aicent) to break cyclic deadlocks.
 rttp = { workspace = true, features = ["std"] }
 rpki = { workspace = true, features = ["std"] }
 zcmk = { workspace = true, features = ["std"] }
 
-# --- Hard Real-Time & Physical Execution (1.2 kHz Standard) ---
-# Utilizing the Embassy ecosystem for deterministic task scheduling without OS jitter.
+# --- Hard Real-Time & Physical Execution (1.2 kHz Loops) ---
+# Utilizing the Embassy ecosystem for deterministic task scheduling.
 embassy-executor = { workspace = true }
 embassy-time     = { workspace = true }
 
-# --- Kinetic Primitives & Mathematics (The Digital Spine) ---
-# [PHYSICS] Linear algebra for 12-DOF kinematics and 128-bit torque manifolds.
+# --- Kinetic Primitives & Mathematics (The Spinal Cord) ---
+# [PHYSICS] Linear algebra for 12-DOF kinematics and motor torque vectors.
 nalgebra = { workspace = true }
 # [PERF] Zero-allocation storage for high-frequency motor trajectories.
 smallvec = { workspace = true, features = ["serde"] }
 
 # --- Logic, State & Telemetry ---
+# [PERF] Required for AtomicCell<u128> support in Shadow-State manifolds.
+crossbeam = { workspace = true } 
 serde     = { workspace = true, features = ["derive"] }
 anyhow    = { workspace = true }
 tracing   = { workspace = true } # High-fidelity proprioceptive telemetry
-once_cell = { workspace = true } # Safe static initialization of 128-bit manifolds
+once_cell = { workspace = true } # Safe static initialization of hardware interfaces
 tokio     = { workspace = true, features = ["sync", "rt"] } # Simulation bridge for CI/CD
 
 [features]
@@ -47,7 +48,7 @@ tokio     = { workspace = true, features = ["sync", "rt"] } # Simulation bridge 
 default = ["std"]
 
 # [Standard v1.0] Standard library support for the embodied execution layer.
-# Explicitly re-exporting 'std' for internal Aicent Stack dependencies to ensure homeostasis.
+# Re-exports 'std' for internal Aicent Stack dependencies to ensure homeostasis.
 std = [
     "serde/std", 
     "anyhow/std", 
