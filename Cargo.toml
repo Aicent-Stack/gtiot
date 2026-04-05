@@ -17,14 +17,14 @@ categories = ["embedded", "hardware-support", "no-std", "science", "aerospace"]
 
 [dependencies]
 # --- Core Organism Linking (Unidirectional Dependency Flow) ---
-# The Body reacts to Nerves (RTTP) gated by Immunity (RPKI) and Blood (ZCMK).
-# Explicitly enable 'std' features to ensure full protocol parity in edge clusters.
+# The Body reacts to Nerves (RTTP) and is gated by Immunity (RPKI) and Blood (ZCMK).
+# All dependencies explicitly enable 'std' features for integrated edge compute nodes.
 rttp = { workspace = true, features = ["std"] }
 rpki = { workspace = true, features = ["std"] }
 zcmk = { workspace = true, features = ["std"] }
 
 # --- Hard Real-Time & Physical Execution (1.2 kHz Loops) ---
-# Utilizing the Embassy ecosystem for deterministic task scheduling.
+# Utilizing the Embassy ecosystem for deterministic task scheduling without OS jitter.
 embassy-executor = { workspace = true }
 embassy-time     = { workspace = true }
 
@@ -32,21 +32,23 @@ embassy-time     = { workspace = true }
 # [PHYSICS] Linear algebra for 12-DOF kinematics and motor torque vectors.
 nalgebra = { workspace = true }
 # [PERF] Zero-allocation storage for high-frequency motor trajectories.
+# Note: smallvec does not possess an 'std' feature; used as-is for stack-allocation.
 smallvec = { workspace = true }
 
 # --- Logic, State & Telemetry ---
 serde     = { workspace = true, features = ["derive"] }
 anyhow    = { workspace = true }
-tracing   = { workspace = true } # High-fidelity proprioceptive telemetry
-once_cell = { workspace = true } # Safe static initialization of hardware buses
-tokio     = { workspace = true, features = ["sync", "rt"] } # Simulation/Bridge layer
+tracing   = { workspace = true } # High-fidelity proprioceptive telemetry for audit trails
+once_cell = { workspace = true } # Safe static initialization of 128-bit manifolds
+tokio     = { workspace = true, features = ["sync", "rt"] } # Simulation bridge for CI environments
 
 [features]
-# Standard implementation: Optimized for high-end robotic compute nodes.
+# Standard implementation: Optimized for high-end robotic compute clusters.
 default = ["std"]
 
-# [Standard v1.0] Standard library support for general-purpose compute.
-# Re-exports 'std' for internal Aicent Stack dependencies to prevent feature fragmentation.
+# [Standard v1.0] Standard library support for the embodied execution layer.
+# 🛡️ FIX: Explicitly excluded 'smallvec/std' as it does not exist.
+# Re-exports 'std' for internal Aicent Stack dependencies to avoid feature drift.
 std = [
     "serde/std", 
     "anyhow/std", 
@@ -58,7 +60,7 @@ std = [
 ]
 
 # [RFC-005] Bare-metal support for industrial robotics (MCUs/NPUs).
-# Disables std and utilizes libm for complex kinetic calculations.
+# Disables std and utilizes libm for complex kinetic reduction.
 no_std = ["nalgebra/libm"]
 
 [dev-dependencies]
