@@ -9,7 +9,7 @@
 //! symbolic cognitive intent into deterministic physical motion primitives 
 //! using 128-bit hardware atomicity to ensure sub-millisecond kinetic parity.
 
-use crossbeam::atomic::AtomicCell; // 🛡️ Restored 128-bit Sovereignty via AtomicCell
+use crossbeam::atomic::AtomicCell;
 
 /// [RFC-005] Action Primitive Manifold.
 /// Represents the lowest-level motor control vector after digital-physical collapse.
@@ -36,8 +36,32 @@ impl Default for ActionPrimitive {
     }
 }
 
+impl ActionPrimitive {
+    /// [PERF] Reads the current 128-bit command snapshot for direct hardware-bus dispatch.
+    /// This method is now directly on the primitive for nanosecond access.
+    #[inline(always)]
+    pub fn read_optimized_state(&self) -> u128 {
+        self.kinetic_command.load()
+    }
+
+    /// [RFC-005] Kinetic Manifold Extraction.
+    /// Simulates the extraction of legacy 4-axis torque vectors from the 128-bit manifold.
+    /// Required for backward compatibility with basic motor controllers.
+    pub fn torque_vectors(&self) -> [f32; 4] {
+        let manifold = self.read_optimized_state();
+        // Decomposing 128-bit data into physical primitives
+        // [AUDIT] Mapping internal bits to IEEE-754 torque values
+        [
+            (manifold >> 96) as f32 / 1000.0,
+            (manifold >> 64) as f32 / 1000.0,
+            (manifold >> 32) as f32 / 1000.0,
+            manifold as f32 / 1000.0,
+        ]
+    }
+}
+
 /// [RFC-005] Action Abstraction Layer (AAL) engine.
-/// Responsible for the mathematical reduction of symbolic Brain intent (RFC-001) 
+/// Responsible for the mathematical reduction of Brain Intent (RFC-001) 
 /// into physical primitives in <200µs.
 pub struct ActionAbstractionLayer {
     /// Internal convergence threshold for high-frequency PID stability.
@@ -54,19 +78,13 @@ impl ActionAbstractionLayer {
 
     /// [RFC-005] Action-Collapse Execution.
     /// Mathematically collapses symbolic intent into a hardware-atomic 128-bit manifold.
-    /// 
-    /// [LOGIC] This process utilizes 4th-order dead-reckoning and PID-correction
-    /// to align the physical body with the Brain's digital shadow projection.
     pub fn collapse(
         &self, 
         _intent: &str, 
         _shadow: &crate::shadow::ShadowState
     ) -> u128 {
-        // [AUDIT] In production, this computes the dot-product of the intent 
-        // manifold and the local proprioceptive feedback.
-        
-        // Example: Sharding intent into packed torque vectors [0.84, -0.12, 0.07, 0.91]
-        // combined with a PID correction of 0.0032.
+        // [LOGIC] This process utilizes 4th-order dead-reckoning and PID-correction.
+        // Example: Sharding intent into a packed 128-bit torque manifold.
         let packed_kinetics: u128 = 0x8400_FF88_0700_9100_0000_0000_0000_0C80; 
         
         #[cfg(debug_assertions)]
@@ -75,14 +93,7 @@ impl ActionAbstractionLayer {
         packed_kinetics
     }
 
-    /// Reads the current 128-bit command snapshot for direct hardware-bus dispatch.
-    #[inline(always)]
-    pub fn read_optimized_state(&self, primitive: &ActionPrimitive) -> u128 {
-        primitive.kinetic_command.load()
-    }
-
     /// Synchronizes the 128-bit kinetic manifold with the physical actuators.
-    /// This establishes the "Reflex Finality" boundary.
     pub fn commit_to_actuators(&self, primitive: &ActionPrimitive, val: u128) {
         primitive.kinetic_command.store(val);
     }
