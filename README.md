@@ -1,4 +1,5 @@
 [![Organism Vitality & Protocol Audit](https://github.com/Aicent-Stack/aicent-stack/actions/workflows/rust-ci.yml/badge.svg)](https://github.com/Aicent-Stack/aicent-stack/actions/workflows/rust-ci.yml)
+
 [![RFC](https://img.shields.io/badge/RFC-005-yellow.svg)](https://github.com/Aicent-Stack/manifesto/blob/main/rfcs/RFC-005-GTIOT-BODY.md)
 [![Status](https://img.shields.io/badge/Status-Homeostasis-brightgreen.svg)](#)
 [![Org](https://img.shields.io/badge/Org-Aicent.com-blue.svg)](http://gtiot.com)
