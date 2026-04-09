@@ -1,6 +1,6 @@
-# 🤖 Contributing to GTIOT: The Body
+ # 🟡🤖 Contributing to GTIOT: The Embodied Body (RFC-005)
 
-**Thank you for choosing to evolve the embodied execution layer of the Aicent Stack. You are contributing to a physical reflex arc designed to collapse digital intent into physical reality at a 1.2 kHz operational frequency.**
+**Thank you for choosing to evolve the embodied execution layer of the Aicent Stack. You are at the "Execution Layer" of the Sovereign AI Organism. Any mutation proposed here affects the physical proprioception and action-collapse precision of the entire Hive.**
 
 <p align="left">
   <img src="https://img.shields.io/badge/Status-Homeostasis-brightgreen.svg" alt="Status">
@@ -8,68 +8,51 @@
   <img src="https://img.shields.io/badge/License-Apache--2.0-lightgrey.svg" alt="License">
 </p>
 
-⚪ **AICENT** | 💎 **RTTP** | 🔴 **RPKI** | 🟢 **ZCMK** | 🟡 **GTIOT** | 🟣 **AICENT-NET**
+**⚪ [AICENT](http://aicent.com) | 💎 [RTTP](http://rttp.com) | 🔴 [RPKI](http://rpki.com) | 🟢 [ZCMK](http://zcmk.com) | 🟡 [GTIOT](http://gtiot.com) | 🟣 [AICENT-NET](http://aicent.net) | 🌿 [epoekie](http://epoekie.com)**
 
 ---
 
-## 🏛️ The GTIOT Engineering Philosophy
+## 🏛️ The Embodied Philosophy: Manifesting Intent
 
-GTIOT is not a traditional IoT library; it is a **Deterministic Physical Manifestation Layer [RFC-005]**. Every contribution must prioritize low-jitter execution and proprioceptive feedback loops. We treat every edge node as a living limb of the Aicent organism.
+The `gtiot` repository manages the **Body Layer** of the stack. Its role is to bridge the digital-physical divide by transforming high-level commands into deterministic motor primitives. Guided by the **🌿 Epoekie Philosophy**, GTIOT acts as an embodied symbiont that "animates" host infrastructure (robots, sensors, actuators) without seizing physical ownership, ensuring a mutualistic relationship between the AI soul and its physical substrate.
 
-### Physical Standards:
-1. **Action-Collapse Finality:** Digital intent must collapse into motor primitives in **< 200µs**. Any logic that exceeds this latency threshold without hardware-offloading justification will be rejected.
-2. **Hard Real-Time Determinism:** All control loops must adhere to the 1.2 kHz (833µs) sampling interval. We utilize **[Embassy](https://embassy.dev/)** for async hardware orchestration without runtime non-determinism.
-3. **Hardware-Gated Security:** Actuators must remain physically locked until an RPKI-verified (RFC-003) pulse is received. No "software-only" bypasses are permitted.
-
----
-
-## 🔬 The RFC-First Process
-
-Physical evolution is governed by the **RFC-005 Specification**. We do not accept "loose" implementations that risk kinetic stability.
-
-1. **Audit the Spec:** Deeply study **[RFC-005: GTIOT (Body)](https://github.com/Aicent-Stack/manifesto/blob/main/rfcs/RFC-005-GTIOT-BODY.md)**.
-2. **Kinetic Proposal:** Proposals for new AAL (Action Abstraction Layer) primitives or sensor fusion algorithms require a `[KINETIC-EVOLUTION]` issue.
-3. **Hive Resonance:** Ensure all motor trajectories are compatible with **AICENT-NET (RFC-006)** swarm alignment protocols.
+### The Body’s Mandatory Reflexes:
+1.  **Action-Collapse Speed:** Mathematical reduction of intent to torque must reach finality in **< 200µs**.
+2.  **Proprioceptive Fidelity:** Sensory-motor loops must operate at a deterministic **1.2 kHz frequency**.
+3.  **Physical Sovereignty:** Motors and actuators must be gated by hardware-level **[RPKI](http://rpki.com)** verification to prevent non-sovereign hijacking.
 
 ---
 
-## 🦀 Technical Rigor (Body Tier)
+## 🔬 Technical Standards for Somatic Mutations
 
-- **Language:** Performance-critical Rust (1.75+).
-- **Embedded Environment:** Logic must adhere to `no_std` principles for bare-metal compatibility where applicable.
-- **Memory Management:** Zero heap allocation in the sensory-motor hot-path. Use static buffers and stack-based primitives.
-- **Feedback Loops:** Implementation of PID or Model Predictive Control (MPC) must be validated against the **Shadow-State Sync** model.
+To maintain the **165.28µs** end-to-end reflex arc, all contributions to the `gtiot` crate must adhere to:
 
----
-
-## 🛠️ Development Workflow
-
-```bash
-# 1. Pull the Sovereign Workspace
-git clone https://github.com/Aicent-Stack/aicent-stack.git
-cd aicent-stack
-
-# 2. Focus on the Body Crate
-cargo check -p gtiot
-# Note: For hardware simulation, use the local test runners
-```
-
-### Contribution Steps:
-1. **Fork** the `gtiot` repository under the Aicent-Stack organization.
-2. **Branch:** Use the `evolution/` prefix (e.g., `evolution/aal-torque-vectoring`).
-3. **Commit:** Use [Conventional Commits](https://www.conventionalcommits.org/) (e.g., `feat(body): added PID drift correction for Node-882`).
-4. **Validation:** PRs must include a "Shadow-State Parity Report" proving 99.9% alignment between digital intent and physical actuation.
+- **Hard Real-Time Determinism:** Implementations must utilize the **Embassy** framework or direct register access. We reject any logic that relies on non-deterministic OS schedulers or introduces runtime jitter.
+- **Zero-Allocation Execution:** Use of the heap is strictly prohibited in the `sensory_motor_loop`. All motor trajectories must be managed using stack-allocated primitives (via **SmallVec**).
+- **Edge-Fusion Optimization:** Any sensory preprocessing must achieve a minimum **84.2% bandwidth reduction** by condensing raw streams into 512-byte **Semantic Fingerprints**.
+- **Shadow-State Persistence:** All nodes must maintain a local **Shadow Twin** capable of 4th-order dead-reckoning for at least 5ms during network severance.
 
 ---
 
-## 📜 Sovereign Ownership & Licensing
+## 📜 The Evolutionary Workflow (Neural Integration)
 
-🛡️ All contributions are licensed under the **Apache-2.0 License** via the Aicent.com Organization. By contributing, you agree that your code becomes the permanent muscle memory of the Sovereign AI Organism.
-
----
-**SYSTEM STATUS: HOMEOTASIS**  
-*"Collapsing digital intent into physical reality at wire speed."*
-
-[Visit GTIOT.com](http://gtiot.com) | [Connect to Aicent.net](http://aicent.net) | [Follow @Aicent_com](https://x.com/Aicent_com)
+1.  **The Pulse (Discussion):** Propose embodied mutations in the [Organization Issues](https://github.com/Aicent-Stack/.github/issues/new?template=evolution_proposal.yml) using the Evolution template.
+2.  **The Specification:** Ensure your logic preserves the **Substrate Mastery** doctrine defined in the **[Epoekie Integration Guide](https://github.com/Aicent-Stack/aicent-docs/blob/main/INTEGRATION_GUIDE.md)**.
+3.  **The Reflex Test:** Submit a PR with a benchmark proving **< 200µs Action-Collapse latency** on a verified hardware substrate (e.g., ARM or RISC-V).
+4.  **Resonance Check:** Your PR will be audited by the **[Sentinel](https://github.com/Aicent-Stack/aicent-traffic)** for physical jitter signatures.
 
 ---
+
+## 🛡️ Sovereign Ownership & Substrate Animation
+
+- **License:** All contributions are licensed under the **Apache License 2.0**.
+- **Reputation Gain:** Optimizing AAL (Action Abstraction Layer) logic or hardening edge-fusion grants significant **Sovereign AID** reputation scores.
+- **Symbiotic Embodiment:** By contributing, you attest that your code animates the host infrastructure while respecting its physical integrity, following the **[🌿 Epoekie Symbiosis](https://github.com/Aicent-Stack/epoekie)** model.
+
+---
+🔗 **Technical Genome:** [Aicent Docs](https://github.com/Aicent-Stack/aicent-docs)
+📡 **Sentinel Dashboard:** [Body Vitals Active ✅]
+
+*"The Body is the Manifestation of Intent; Action has No Delay."*
+---
+© 2026 Aicent.com Organization. **SYSTEM STATUS: EMBODIED-STABLE**
