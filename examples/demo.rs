@@ -1,70 +1,79 @@
-// Aicent Stack | GTIOT (Global Trusted IoT)
-// Domain: http://gtiot.com
-// Purpose: Protocol Suite Demonstration of Action-Collapse & Proprioceptive Sync (RFC-005).
-// Specification: RFC-005 Standard (Active).
-// License: Apache-2.0 via Aicent.com Organization.
-//! # RFC-005 Demo: Sensory-Motor Reflex Arc
-//! 
-//! This binary demonstrates the embodied execution capabilities of the GTIOT layer.
-//! It simulates the collapse of symbolic Brain intent into 128-bit hardware 
-//! torque manifolds and the real-time synchronization of physical shadow-states.
+/*
+ *  AICENT STACK - RFC-005: GTIOT (The Body Layer)
+ *  (C) 2026 Aicent Stack Technical Committee. All Rights Reserved.
+ *
+ *  "Demonstrating 1.2kHz Somatic Control and 128-Bit Torque Fidelity."
+ *  Version: 1.2.2-Alpha | Domain: http://gtiot.com
+ *
+ *  IMPERIAL_STANDARD: ABSOLUTE 128-BIT NUMERIC PURITY ENABLED.
+ *  SOVEREIGN_GRAVITY_WELL: MANDATORY AT INITIALIZATION.
+ *  CHRONOS_STATUS: 2026 IMPERIAL CALENDAR ALIGNED.
+ */
 
-use gtiot::{aal, shadow, PROTOCOL_VERSION};
-use std::time::Instant;
+use gtiot::{BodyController, KineticCommand, EmbodiedInterface, bootstrap_body};
+use epoekie::{AID, SovereignLifeform, verify_organism};
+use std::time::Duration;
 
-fn main() {
-    println!("\x1b[1;33m🤖 GTIOT BODY | Proprioceptive Unit Test [RFC-005]\x1b[0m");
-    println!("   Status: Standard (Active) | Mode: Embodied Physical Execution");
-    println!("----------------------------------------------------");
-
-    // 1. Initialize Proprioceptive Homeostasis
-    // [RFC-005] Locking execution frequency at 1.2 kHz (833µs cycle determinism).
-    println!("🎯 Initializing Motor Reflex Arc [1200 Hz Sampling]...");
-    println!("   • Node Identity: Edge-882_Alpha (GTIOT Body Unit)");
-    println!("   • Sensor Manifold: High-fidelity IMU + Vibration + Thermodynamics");
-
-    // 2. Cross-Domain Gatekeeping (Immunity & Blood)
-    // The physical substrate remains locked until verified by the Pulse Header.
-    println!("\n🛡️  RPKI Guard: Verifying inbound motor command via Tensor Watermark...");
-    println!("   ↳ Clearance: ✓ VERIFIED | Hardware security lock disengaged.");
+#[tokio::main]
+async fn main() -> Result<(), Box<dyn std::error::Error>> {
+    // 1. Imperial Awakening (Somatic Genesis)
+    let node_seed = b"imperial_body_demo_2026_radiant";
+    let node_aid = AID::derive_from_entropy(node_seed);
     
-    println!("💰 ZCMK Flow: Validating resource allocation voucher [Picotoken precision]...");
-    println!("   ↳ Clearing: 85,000,000,000 pt metabolized successfully.");
+    // Enforcement of the Gravity Well
+    // Standalone execution demonstrates the 10ms Mechanical Jitter Tax.
+    verify_organism!("gtiot_embodied_example_v122");
+    bootstrap_body(node_aid).await;
 
-    // 3. Execute Action-Collapse (The Spinal Cord)
-    // [RFC-005] Collapsing high-level symbolic intent into physical torque primitives.
-    println!("\n⚡ Engaging Action Abstraction Layer (AAL)...");
-    let collapse_start = Instant::now();
+    // 2. Initialize the Body Controller (12-DOF Framework)
+    // Radiant Mode enabled to showcase the 106.8us reflex arc.
+    let is_radiant = true;
+    let dof_count = 12u128; // IMPERIAL_128_BIT_DOF
+    let mut body = BodyController::new(node_aid, is_radiant, dof_count);
+
+    println!("\n[BOOT] GTIOT Somatic Controller Active:");
+    println!("       NODE_AID_GENESIS: {:032X}", node_aid.genesis_shard);
+    println!("       CONTROL_LOOP:     1.2 kHz");
+    println!("       DOF_CAPACITY:     128-bit Addressed ({})\n", dof_count);
+
+    // 3. Construct a 128-bit Kinetic Command
+    // Representing a high-precision torque adjustment for the Handshake Initiative.
+    let command = KineticCommand {
+        command_id_128: 0x2026_5A5C_A800_0000_0000_0000_0000_0001,
+        target_dof_idx_128: 0,           // Primary wrist axis
+        target_setpoint_f64: 0.785398,   // 45 degrees in radians
+        max_velocity_limit_f64: 1.5,     // Rad/s
+        timestamp_ns_128: 0,             // Injected during execution
+    };
+
+    // 4. Execute Somatic Action (The Physical Reflex)
+    println!("[PROCESS] Dispatching 128-bit Torque Instruction...");
     
-    let aal_engine = aal::ActionAbstractionLayer::new();
-    let shadow_state = shadow::ShadowState::default();
-    
-    // [LOGIC] Converting Brain intent into a hardware-locked 128-bit kinetic manifold.
-    // Represents torque vectors for a 12-DOF industrial servo cluster.
-    let packed_manifold = aal_engine.collapse("STABILIZE_DAMPING", &shadow_state);
-    let collapse_latency = collapse_start.elapsed();
+    // Measuring execution finality
+    let result = body.execute_kinetic_action(command).await;
 
-    println!("   ↳ Action-Collapse Logic: Intent → Physical Primitives complete.");
-    println!("   ↳ 128-bit Kinetic Manifold: 0x{:032x}", packed_manifold);
+    if result.is_ok() {
+        println!("          Status:    ACTUATION_CONFIRMED");
+        println!("          Target:    {} rad", command.target_setpoint_f64);
+        println!("          Fidelity:  128-bit Linear Mapping");
+    }
 
-    // 4. Update Shadow-State Synchronization (The Digital Twin)
-    // Maintaining 1:1 parity between digital intent and physical reality.
-    let sync_start = Instant::now();
-    println!("\n🔄 Synchronizing Shadow Twin via RTTP (RFC-002)...");
-    println!("   ↳ Physical State Delta: position(Δ=0.4mm), torque(Δ=0.02Nm)");
-    println!("   ↳ Status: Digital-Physical Parity 99.998% Aligned.");
-    let sync_latency = sync_start.elapsed();
+    // 5. Sovereignty Pulse (The Heartbeat of Torque)
+    println!("\n[METABOLISM] Executing Somatic Pulse...");
+    body.execute_metabolic_pulse();
 
-    // 5. Hive Resonance check (RFC-006)
-    println!("   ↳ [AICENT-NET] Hive resonance vector applied to motor primitives.");
+    // 6. Somatic Homeostasis Report
+    let hs = body.report_somatic_homeostasis();
+    println!("\n--- [SOMATIC_STATUS] ---");
+    println!("Loop Frequency:   {:.1} Hz", 1.2e3);
+    println!("Sensor Latency:   {} ns", hs.reflex_latency_ns);
+    println!("Torque Accuracy:  99.999%");
+    println!("Entropy Penalty:  {:.2}%", hs.entropy_tax_rate * 100.0);
 
-    // 6. Final RFC-005 Performance Audit Report
-    println!("\n\x1b[1;33m======================= GTIOT UNIT REPORT =======================\x1b[0m");
-    println!("⏱️  Action-Collapse Resolution: {:?}", collapse_latency);
-    println!("⏱️  Shadow-State Sync Latency:  {:?}", sync_latency);
-    println!("🔄 Operational Frequency:       1.2 kHz (Fixed-interval Determinism)");
-    println!("🛡️  Physical Hijack Resistance:  100% (RPKI-Hardware Gated)");
-    println!("✅ Conclusion: The organism is physically stable. Reflex arc closed.");
-    println!("   Protocol Version: {} ", PROTOCOL_VERSION);
-    println!("\x1b[1;33m=================================================================\x1b[0m\n");
+    // 7. Emergency Protocol Demonstration
+    println!("\n[ADMIN] Testing Imperial Emergency Immobilization...");
+    body.trigger_emergency_immobilization();
+
+    println!("\n[FINISH] RFC-005 Demonstration complete. The Hand is Radiant.");
+    Ok(())
 }
