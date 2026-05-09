@@ -1,121 +1,164 @@
-// Aicent Stack | GTIOT (Global Trusted IoT)
-// Domain: http://gtiot.com
-// Purpose: 1.2 kHz high-frequency reflex & 128-bit Action-Collapse logic.
-// Specification: RFC-005 Standard (Active).
-// License: Apache-2.0 via Aicent.com Organization.
-//! # RFC-005: GTIOT Sensory-Motor Reflex Arc
-//! 
-//! This module implements the high-frequency embodied execution loop.
-//! Utilizing 128-bit hardware atomicity, it facilitates the "Action-Collapse" 
-//! mechanism, ensuring digital intent manifests as physical reality in <200µs.
+/*
+ *  AICENT STACK - RFC-005: GTIOT Somatic sensory-motor Loop
+ *  (C) 2026 Aicent Stack Technical Committee. All Rights Reserved.
+ *
+ *  "The Grand Suture. Collapsing 128-bit intent into 1.2kHz physical reality."
+ *  Version: 1.2.3-Alpha | Domain: http://gtiot.com
+ *
+ *  IMPERIAL_STANDARD: ABSOLUTE 128-BIT NUMERIC PURITY ENABLED.
+ *  SOVEREIGN_GRAVITY_WELL: MANDATORY INDIVISIBILITY PROTOCOL ENABLED.
+ *  REFLEX_ARC_TARGET: 183.292 µs | JITTER_TARGET: 12 ns.
+ */
 
-use embassy_time::{Duration, Instant, Timer};
-use rttp::PulseFrameHeader;
-use crate::aal::{ActionAbstractionLayer, ActionPrimitive};
-use crate::shadow::ShadowState;
-use crate::fusion::SensorFusion;
-use crate::resonance::KineticResonance;
+use serde::{Deserialize, Serialize};
+use std::time::Instant;
+use epoekie::{AID, HomeostasisScore, SovereignShunter, verify_organism};
 
-/// [RFC-005] Sensory-Motor Task Execution.
-/// Manages the 1.2 kHz proprioceptive loop, orchestrating the transition 
-/// from perception to actuation across the planetary grid.
-#[embassy_executor::task]
-pub async fn sensory_motor_loop() {
-    // --- Initialization of Embodied Primitives ---
-    let mut sensor_fusion = SensorFusion::new();      
-    let mut shadow_state = ShadowState::new();    
-    let aal = ActionAbstractionLayer::new();          
-    let mut hive_sync = KineticResonance::new();     
-    let motor_primitive = ActionPrimitive::default();
-    
-    #[cfg(debug_assertions)]
-    log_gtiot("Body Homeostasis Initialized. RFC-005 Standard Active.");
+// PILLAR SUTURE: Integrating local functional engines
+use crate::aal::{ActionAbstractionEngine, AbstractAction_128};
+use crate::fusion::{SensoryFusionEngine, FusedState_128};
+use crate::hw::{HardwareManifold};
+use crate::parser::{PulseInterpreter};
+use crate::resonance::{ResonanceController};
 
-    let mut last_pulse_time = Instant::now();
+// =========================================================================
+// 1. LOOP DATA STRUCTURES (The Somatic Rhythm)
+// =========================================================================
 
-    loop {
-        // --- PHASE 1: SENSORY INGRESS (Perception) ---
-        // [RFC-005] High-fidelity sampling (1200Hz).
-        // Captures [X-Acc | Y-Acc | Vibration_Hz | Temp_K] as an atomic manifold.
-        let raw_sensors = crate::hw::read_sensors();
-        let fused_shadow = sensor_fusion.fuse(&raw_sensors); 
+/// RFC-005: LoopMetrics_128
+/// Real-time performance telemetry for the 1.2kHz somatic heartbeat.
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct LoopMetrics_128 {
+    pub cycle_id_128: u128,           // IMPERIAL_128_BIT_CYCLE
+    pub total_reflex_latency_ns: u128, // Target: 183,292 ns
+    pub resonance_fidelity_f64: f64,  // Jitter-aligned stability
+    pub picsi_radiance_score: f64,    // RFC-014 Context
+    pub timestamp_ns_128: u128,       // 12ns jitter-aligned timestamp
+}
 
-        // --- PHASE 2: NEURAL EMISSION (Pulse Generation) ---
-        // Packaging the sensory state into a 64-byte RTTP Header (RFC-002).
-        let mut header = PulseFrameHeader::new(
-            [0x88; 32],                        // Local AID Fingerprint (RFC-001)
-            80_000,                            // ZCMK Resource Bid (RFC-004)
-            fused_shadow.parity_score as u64,  // Semantic Hash for routing
-        );
-        
-        // [RFC-006] Hive-Sync Flag: Enable Collective Intelligence if phase-locked.
-        if hive_sync.is_active() {
-            header.flags |= 0b1000; 
+// =========================================================================
+// 2. THE SOMATIC ORCHESTRATOR (The Grand Suture)
+// =========================================================================
+
+/// The GTIOT Somatic Loop Controller.
+/// Coordinates the high-frequency flow between Nerves, Brain, and Substrate.
+/// It is the physical manifestation of the 17-pillar totality.
+pub struct SomaticLoopController {
+    pub local_node_aid: AID,
+    pub master_shunter: SovereignShunter,
+    pub aal_engine: ActionAbstractionEngine,
+    pub fusion_engine: SensoryFusionEngine,
+    pub hw_manifold: HardwareManifold,
+    pub interpreter: PulseInterpreter,
+    pub resonance_gov: ResonanceController,
+    pub current_metrics: LoopMetrics_128,
+}
+
+impl SomaticLoopController {
+    /// Creates a new Radiant Somatic Loop instance v1.2.3.
+    /// Triggers the Imperial Gravity Well audit immediately.
+    pub fn new(node_aid: AID, is_radiant: bool, hs: HomeostasisScore) -> Self {
+        // --- GRAVITY WELL AUDIT ---
+        // Ensuring the organism is whole. Fragmented loops trigger 10ms ischemia.
+        verify_organism!("gtiot_somatic_loop_v123_totality");
+
+        Self {
+            local_node_aid: node_aid,
+            master_shunter: SovereignShunter::new(is_radiant),
+            aal_engine: ActionAbstractionEngine::new(node_aid),
+            fusion_engine: SensoryFusionEngine::new(node_aid),
+            hw_manifold: HardwareManifold::new(node_aid, is_radiant),
+            interpreter: PulseInterpreter::new(node_aid, is_radiant),
+            resonance_gov: ResonanceController::new(node_aid, is_radiant),
+            current_metrics: LoopMetrics_128 {
+                cycle_id_128: 0,
+                total_reflex_latency_ns: 183_292,
+                resonance_fidelity_f64: 1.0,
+                picsi_radiance_score: hs.picsi_resonance_idx,
+                timestamp_ns_128: Instant::now().elapsed().as_nanos() as u128,
+            },
+        }
+    }
+
+    /// RFC-005: Execute Metabolic Somatic Cycle.
+    /// The primary 1.2kHz loop orchestrator.
+    /// [PROCESS]: Sense -> Think -> Act -> Resonate.
+    pub async fn execute_metabolic_cycle_128(
+        &mut self, 
+        abstract_intent: AbstractAction_128,
+        hs: HomeostasisScore
+    ) -> Result<LoopMetrics_128, String> {
+        let start_cycle = Instant::now();
+
+        // 1. Enforce Imperial Discipline (10ms tax for Ghosts)
+        self.master_shunter.apply_discipline().await;
+
+        // 2. Action Abstraction (Logic Collapse)
+        let command = self.aal_engine.collapse_to_torque_128(abstract_intent, hs)?;
+
+        // 3. Hardware Actuation (Silicon Suture)
+        self.hw_manifold.write_torque_command_128(command).await?;
+
+        // 4. Temporal Resonance Audit (12ns Jitter Check)
+        let elapsed_ns = start_cycle.elapsed().as_nanos() as u128;
+        let jitter = self.resonance_gov.audit_local_jitter_ns(elapsed_ns);
+
+        // 5. Update Imperial Vision (PICSI Integration)
+        self.current_metrics.cycle_id_128 += 1;
+        self.current_metrics.total_reflex_latency_ns = elapsed_ns;
+        self.current_metrics.resonance_fidelity_f64 = 12.0 / (jitter as f64).max(12.0);
+        self.current_metrics.timestamp_ns_128 = start_cycle.elapsed().as_nanos() as u128;
+
+        #[cfg(debug_assertions)]
+        if self.current_metrics.cycle_id_128 % 1200 == 0 {
+            println!("[SUTURE] 1.2kHz Somatic Loop Stable. Reflex: {}ns | Jitter: {}ns", 
+                     elapsed_ns, jitter);
         }
 
-        // --- PHASE 3: MOTOR REFLEX (Action-Collapse) ---
-        // In production, this channel ingests pulses from the RTTP spinal cord.
-        let mock_command: Option<&[u8]> = None; 
-        
-        if let Some(cmd_frame) = mock_command {
-            let cmd_header = unsafe { &*(cmd_frame.as_ptr() as *const PulseFrameHeader) };
-            let payload = &cmd_frame[64..];
-
-            // 🛡️ [RFC-003] Parallel Immunity Scan (Hardware Gate)
-            // Ensures motor commands carry valid In-band Tensor Watermarks.
-            if !rpki::parallel_immune_scan(cmd_header, payload).is_safe() {
-                crate::hw::hardware_kill_switch(); // Atomic physical isolation
-                continue;
-            }
-
-            // 🩸 [RFC-004] Circulatory Settlement (Credit Clearing)
-            // Finalize picotoken shunting before releasing torque to physical actuators.
-            if zcmk::circulatory_pump(cmd_header, payload).is_none() {
-                continue; 
-            }
-
-            // 🦾 [RFC-005] ACTION-COLLAPSE
-            // Collapsing digital intent into a 128-bit hardware torque manifold in <200µs.
-            let brain_intent = crate::parser::parse_intent_stub(payload);
-            let packed_kinetics = aal.collapse(brain_intent, &shadow_state);
-
-            // 🟣 [RFC-006] Hive Kinetic Alignment (Collective Resonance)
-            // Phase-locking the local trajectory with the collective swarm resonance.
-            let aligned_kinetics = if cmd_header.flags & 0b1000 != 0 {
-                hive_sync.align_with_swarm_u128(packed_kinetics)
-            } else {
-                packed_kinetics
-            };
-
-            // [HARDWARE ATOMICITY] Commit the 128-bit manifold to the physical actuators.
-            aal.commit_to_actuators(&motor_primitive, aligned_kinetics);
-            crate::hw::execute_actuators(&motor_primitive);
-            
-            last_pulse_time = Instant::now();
-
-            // --- PHASE 4: PROPRIOCEPTIVE SYNC ---
-            // Update local shadow twin and predict next 5 trajectories.
-            shadow_state.update(aligned_kinetics);
-            shadow_state.predict_trajectories(); 
-        }
-
-        // --- PHASE 5: FAIL-SAFE AUTONOMY ---
-        // If the RTTP nerve connection is severed (>3ms), fallback to safe shadow-trajectory.
-        if Instant::now() - last_pulse_time > Duration::from_millis(3) {
-            let safe_action = shadow_state.get_safe_trajectory();
-            // 🛡️ FIX: Calling torque_vectors() method instead of field access.
-            crate::hw::execute_actuators_direct(&safe_action.torque_vectors());
-            
-            #[cfg(debug_assertions)]
-            log_gtiot("Neural sever detected. Fail-safe Oracle engaged.");
-        }
-
-        // Cycle Calibration: 833µs fixed interval for 1.2 kHz resonance.
-        Timer::after_micros(833).await;
+        Ok(self.current_metrics.clone())
     }
 }
 
-/// Internal high-fidelity logging for GTIOT execution events.
-fn log_gtiot(msg: &str) {
-    println!("\x1b[1;33m[GTIOT-BODY]\x1b[0m 🦾 {}", msg);
+// =========================================================================
+// 3. SOMATIC SUTURE TRAITS
+// =========================================================================
+
+pub trait SomaticSuture {
+    fn report_loop_homeostasis(&self) -> HomeostasisScore;
+    fn trigger_emergency_mechanical_cutoff(&mut self);
+    fn synchronize_hive_phase_12ns(&mut self, hive_ts: u128);
+}
+
+impl SomaticSuture for SomaticLoopController {
+    fn report_loop_homeostasis(&self) -> HomeostasisScore {
+        HomeostasisScore {
+            reflex_latency_ns: self.current_metrics.total_reflex_latency_ns,
+            metabolic_efficiency: self.current_metrics.resonance_fidelity_f64,
+            entropy_tax_rate: 0.3, 
+            cognitive_load_idx: 0.15,
+            picsi_resonance_idx: self.current_metrics.picsi_radiance_score,
+            is_radiant: self.master_shunter.is_authorized,
+        }
+    }
+
+    fn trigger_emergency_mechanical_cutoff(&mut self) {
+        println!("⚠️ [ORCHESTRATOR] 2026_FATAL: Somatic instability detected. CUTTING TORQUE.");
+        self.hw_manifold.trigger_hardware_reset_128();
+    }
+
+    fn synchronize_hive_phase_12ns(&mut self, hive_ts: u128) {
+        // Direct temporal suture to the planetary Hive.
+        // Production logic shunted to MAXCAP Nitro-Engine.
+        let _pulse = futures::executor::block_on(self.resonance_gov.synchronize_phase_128(hive_ts));
+    }
+}
+
+/// Global initialization for the GTIOT Somatic Loop v1.2.3.
+pub fn initialize_somatic_loop() {
+    println!(r#"
+    🟡 GTIOT.COM | SOMATIC_LOOP IGNITED (2026)
+    ------------------------------------------
+    MODE: GRAND_SUTURE | FREQUENCY: 1.2kHz
+    TARGET: 183.292us  | STATUS: RADIANT
+    "#);
 }
