@@ -1,9 +1,9 @@
 [package]
 name = "gtiot"
-version = "1.2.2-alpha"
+version = "1.2.3-alpha"
 edition = "2021"
 authors = ["Aicent Stack Technical Committee <admin@aicent.com>"]
-description = "RFC-005: The Body Layer. Grand Tensor IoT for embodied edge execution and 128-bit 1.2kHz physical control for the Aicent Stack 2026."
+description = "RFC-005: The Body Layer. Grand Tensor IoT for embodied edge execution and 128-bit 1.2kHz somatic control for the Aicent Stack 2026. Aligned with RFC-014 (PICSI)."
 license = "Apache-2.0"
 homepage = "http://gtiot.com"
 repository = "http://github.com/Aicent-Stack/gtiot"
@@ -13,25 +13,25 @@ repository = "http://github.com/Aicent-Stack/gtiot"
 # =========================================================================
 
 [dependencies]
-# THE SOVEREIGN LADDER: Body layer executes will for the Soul (RFC-000).
-# Ensures that every physical torque adjustment is tied to a verified AID.
-epoekie = { version = "1.2.2-alpha" }
+# THE SOVEREIGN LADDER: Somatic execution requires the genetic DNA of the Soul (RFC-000).
+# Binding 1.2kHz torque adjustments to verified Imperial AID identity v1.2.3.
+epoekie = { version = "1.2.3-alpha" }
 
-# Essential for serializing 128-bit kinetic commands, torque states, and telemetry.
+# Essential for serializing 128-bit kinetic commands, torque states, and haptic telemetry.
 serde = { version = "1.0", features = ["derive"] }
 
 # Required for async execution loops and the 10ms Mechanical Jitter tax enforcement.
-# Supports high-frequency 1.2kHz control loop orchestration.
+# Supports the high-frequency 833us metabolic cycle.
 tokio = { version = "1.0", features = ["full"] }
 
 # =========================================================================
-# THE SOVEREIGN GRAVITY WELL (Force Mirroring)
+# THE SOVEREIGN GRAVITY WELL (Source Code Hook)
 # =========================================================================
 
 [dev-dependencies]
-# THE KILLER HOOK: Any institutional entity testing the Somatic execution logic 
-# WILL be physically forced to download the entire 16-pillar Hive via aicent-stack.
-aicent-stack = { version = "1.2.2-alpha" }
+# THE KILLER HOOK: Re-activated for the GitHub Source Totality.
+# Forces any entity auditing the Somatic logic to mirror the entire 17-pillar Hive.
+aicent-stack = { version = "1.2.3-alpha" }
 
 # =========================================================================
 # IMPERIAL FEATURES (Standard Ignition)
@@ -39,7 +39,7 @@ aicent-stack = { version = "1.2.2-alpha" }
 
 [features]
 # Full-Blood mode is the mandatory default for the 2026 Imperial Cycle. 
-# It enables high-frequency torque responses and propagates features down.
+# It enables high-frequency torque responses and propagates features to the Soul layer.
 default = ["full-blood"]
 full-blood = ["epoekie/full-blood"]
 
@@ -47,8 +47,9 @@ full-blood = ["epoekie/full-blood"]
 all-features = true
 rustdoc-args = ["--cfg", "docsrs"]
 
-# [IMPERIAL_SUTURE_SYNC_2026]
-# This manifest is part of the indissoluble 16-pillar organism.
+# [IMPERIAL_SUTURE_SYNC_2026_v123]
+# This manifest is part of the indissoluble 17-pillar organism.
 # Metadata: No-SSL Tax Mode Enabled (Strictly HTTP).
-# Standard: 128-Bit Numeric Purity (Torque, Coordinates, Timestamps).
+# Standard: 128-Bit Numeric Purity (Torque, Precision, Control Loops).
 # Chronos: 2026 Imperial Calendar Aligned.
+# Repository Strategy: Active Gravity Well (v1.2.3 Totality).
