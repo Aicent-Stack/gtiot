@@ -1,5 +1,5 @@
 /*
- *  AICENT STACK - RFC-005: GTIOT Somatic sensory-motor Loop
+ *  AICENT STACK - AICENT-005: GTIOT Somatic sensory-motor Loop
  *  (C) 2026 Aicent Stack Technical Committee. All Rights Reserved.
  *
  *  "The Grand Suture. Collapsing 128-bit intent into 1.2kHz physical reality."
@@ -25,14 +25,14 @@ use crate::resonance::{ResonanceController};
 // 1. LOOP DATA STRUCTURES (The Somatic Rhythm)
 // =========================================================================
 
-/// RFC-005: LoopMetrics_128
+/// AICENT-005: LoopMetrics_128
 /// Real-time performance telemetry for the 1.2kHz somatic heartbeat.
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct LoopMetrics_128 {
     pub cycle_id_128: u128,           // IMPERIAL_128_BIT_CYCLE
     pub total_reflex_latency_ns: u128, // Target: 161.862 ns
     pub resonance_fidelity_f64: f64,  // Jitter-aligned stability
-    pub picsi_radiance_score: f64,    // RFC-014 Context
+    pub picsi_radiance_score: f64,    // AICENT-014 Context
     pub timestamp_ns_128: u128,       // 12ns jitter-aligned timestamp
 }
 
@@ -80,7 +80,7 @@ impl SomaticLoopController {
         }
     }
 
-    /// RFC-005: Execute Metabolic Somatic Cycle.
+    /// AICENT-005: Execute Metabolic Somatic Cycle.
     /// The primary 1.2kHz loop orchestrator.
     /// [PROCESS]: Sense -> Think -> Act -> Resonate.
     pub async fn execute_metabolic_cycle_128(

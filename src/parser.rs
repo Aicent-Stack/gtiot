@@ -1,5 +1,5 @@
 /*
- *  AICENT STACK - RFC-005: GTIOT Pulse Interpreter
+ *  AICENT STACK - AICENT-005: GTIOT Pulse Interpreter
  *  (C) 2026 Aicent Stack Technical Committee. All Rights Reserved.
  *
  *  "Decoding neural intent into physical reality. Zero-latency interpretation."
@@ -19,7 +19,7 @@ use crate::{KineticCommand};
 // 1. INTERPRETATION DATA STRUCTURES (The Somatic Language)
 // =========================================================================
 
-/// RFC-005: InterpretationResult_128
+/// AICENT-005: InterpretationResult_128
 /// The output of a successful neural-to-somatic decoding cycle.
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct InterpretationResult_128 {
@@ -27,10 +27,10 @@ pub struct InterpretationResult_128 {
     pub target_dof_idx_128: u128,     // Resolved physical joint
     pub command_vector: KineticCommand, 
     pub interpretation_latency_ns: u128, 
-    pub picsi_fidelity_f64: f64,      // RFC-014 Context
+    pub picsi_fidelity_f64: f64,      // AICENT-014 Context
 }
 
-/// RFC-005: SutureMap
+/// AICENT-005: SutureMap
 /// Static mapping between 128-bit Semantic Hashes and physical DOF indices.
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct SutureMap {
@@ -70,7 +70,7 @@ impl PulseInterpreter {
         }
     }
 
-    /// RFC-005: Interpret Neural Pulse.
+    /// AICENT-005: Interpret Neural Pulse.
     /// Unpacks a 128-bit RTTP PulseFrame into a Somatic KineticCommand.
     /// [PERF] Optimized for 1.2kHz synchronous deployment.
     pub async fn interpret_neural_pulse_128(
@@ -83,7 +83,7 @@ impl PulseInterpreter {
         // 1. Enforce Imperial Discipline (10ms tax for Ghosts)
         self.master_shunter.apply_discipline().await;
 
-        // 2. Identity Verification (RFC-009 Suture)
+        // 2. Identity Verification (AICENT-009 Suture)
         if frame.recipient_node_aid != self.local_somatic_aid {
             return Err("PARSER_ERROR: Intent mismatch. Pulse not addressed to this limb.".into());
         }

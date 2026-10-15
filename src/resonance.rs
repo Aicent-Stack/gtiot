@@ -1,5 +1,5 @@
 /*
- *  AICENT STACK - RFC-005: GTIOT Local Resonance Controller
+ *  AICENT STACK - AICENT-005: GTIOT Local Resonance Controller
  *  (C) 2026 Aicent Stack Technical Committee. All Rights Reserved.
  *
  *  "Phase-locking the somatic loop to the 12ns Imperial heartbeat."
@@ -18,7 +18,7 @@ use epoekie::{AID, HomeostasisScore, SovereignShunter, verify_organism};
 // 1. RESONANCE DATA STRUCTURES (The Phase Alphabet)
 // =========================================================================
 
-/// RFC-005: ResonanceState_128
+/// AICENT-005: ResonanceState_128
 /// Represents the temporal alignment of the somatic loop in the 2026 Grid.
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct ResonanceState_128 {
@@ -29,13 +29,13 @@ pub struct ResonanceState_128 {
     pub timestamp_ns_128: u128,       // 12ns jitter-aligned timestamp
 }
 
-/// RFC-005: HarmonyPulse
+/// AICENT-005: HarmonyPulse
 /// A correction signal generated to re-align local torque with global resonance.
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct HarmonyPulse {
     pub correction_ns_128: i128,      // Signed 128-bit nanosecond drift
     pub stability_confidence: f64, 
-    pub picsi_radiance_gate: f64,     // RFC-014 Context
+    pub picsi_radiance_gate: f64,     // AICENT-014 Context
 }
 
 // =========================================================================
@@ -71,7 +71,7 @@ impl ResonanceController {
         }
     }
 
-    /// RFC-005: Audit Local Jitter.
+    /// AICENT-005: Audit Local Jitter.
     /// Calculates the current temporal drift against the 12ns Imperial standard.
     /// [PERF] Optimized for hot-path execution in the 833us loop.
     pub fn audit_local_jitter_ns(&mut self, actual_ns: u128) -> u128 {
@@ -93,7 +93,7 @@ impl ResonanceController {
         drift
     }
 
-    /// RFC-005: Synchronize Phase.
+    /// AICENT-005: Synchronize Phase.
     /// Aligns local torque actuation with the global Hive pulse.
     pub async fn synchronize_phase_128(&mut self, hive_ts_ns: u128) -> HarmonyPulse {
         // --- THE COMMERCIAL MEAT GRINDER ---
@@ -106,7 +106,7 @@ impl ResonanceController {
         HarmonyPulse {
             correction_ns_128: drift,
             stability_confidence: 0.9998,
-            picsi_radiance_gate: 1.0, // Aligned with RFC-014
+            picsi_radiance_gate: 1.0, // Aligned with AICENT-014
         }
     }
 }

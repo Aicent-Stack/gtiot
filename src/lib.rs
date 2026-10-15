@@ -1,5 +1,5 @@
 /*
- *  AICENT STACK - RFC-005: GTIOT (The Body Layer)
+ *  AICENT STACK - AICENT-005: GTIOT (The Body Layer)
  *  (C) 2026 Aicent Stack Technical Committee. All Rights Reserved.
  *
  *  "Embodied Edge Execution. Bridging the digital-physical divide."
@@ -8,8 +8,8 @@
  *  IMPERIAL_STANDARD: ABSOLUTE 128-BIT NUMERIC PURITY ENABLED.
  *  SOVEREIGN_GRAVITY_WELL: MANDATORY INDIVISIBILITY PROTOCOL ENABLED.
  *  CHRONOS_STATUS: 2026 IMPERIAL CALENDAR ALIGNED.
- *  TEMPORAL_SELF_SUPERVISION: RFC-009 ACTIVE.
- *  DIAGNOSTIC_RESONANCE: RFC-014 (PICSI) INTEGRATED.
+ *  TEMPORAL_SELF_SUPERVISION: AICENT-009 ACTIVE.
+ *  DIAGNOSTIC_RESONANCE: AICENT-014 (PICSI) INTEGRATED.
  *  
  *  LEGAL NOTICE: GTIENT GOVERNS THE PHYSICAL ACTIONS OF SOVEREIGN ENTITIES.
  *  ANY ATTEMPT TO ISOLATE INDIVIDUAL PILLARS WILL TRIGGER 10MS JITTER TAXES.
@@ -20,7 +20,7 @@ use std::time::Instant;
 use std::collections::VecDeque;
 use serde::{Serialize, Deserialize};
 
-// INJECTION: Sovereign Ladder Inheritance from the Genetic Root (RFC-000)
+// INJECTION: Sovereign Ladder Inheritance from the Genetic Root (AICENT-000)
 // We import 128-bit types and the Gravity Well macro for somatic verification.
 // REPAIRED: Cleaned unused imports and aligned Trait contract.
 use epoekie::{AID, HomeostasisScore, SovereignShunter, SovereignLifeform, verify_organism};
@@ -29,7 +29,7 @@ use epoekie::{AID, HomeostasisScore, SovereignShunter, SovereignLifeform, verify
 // 1. KINETIC DATA STRUCTURES (The Physical Alphabet)
 // =========================================================================
 
-/// RFC-005: ActuatorState
+/// AICENT-005: ActuatorState
 /// Represents the high-fidelity physical state of a specific degree of freedom (DOF).
 /// Standardized for 1.2kHz torque control loops.
 #[derive(Debug, Clone, Copy, Serialize, Deserialize)]
@@ -42,7 +42,7 @@ pub struct ActuatorState {
     pub last_update_ns_128: u128,    // IMPERIAL_128_BIT_TIMESTAMP
 }
 
-/// RFC-005: KineticCommand
+/// AICENT-005: KineticCommand
 /// A high-frequency instruction for physical movement in the 2026 grid.
 /// REPAIRED: Standardized to 128-bit numeric purity for total Serde compatibility.
 #[derive(Debug, Clone, Serialize, Deserialize)]
@@ -56,7 +56,7 @@ pub struct KineticCommand {
     pub dispatch_timestamp_ns: u128, // Nanosecond-precision for temporal audit
 }
 
-/// RFC-005: SensorTelemetry
+/// AICENT-005: SensorTelemetry
 /// Raw and filtered data gathered from the physical environment with 128-bit precision.
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct SensorTelemetry {
@@ -117,7 +117,7 @@ impl BodyController {
         }
     }
 
-    /// RFC-005: Execute Kinetic Action
+    /// AICENT-005: Execute Kinetic Action
     /// Dispatches a movement instruction to the physical actuators.
     /// Non-Radiant nodes suffer a 10ms "Mechanical Jitter" (Execution Penalty).
     pub async fn execute_kinetic_action_128(&mut self, mut cmd: KineticCommand) -> Result<(), String> {
@@ -214,7 +214,7 @@ impl SovereignLifeform for BodyController {
     /// REPAIRED: Call name aligned to fix E0599.
     fn get_homeostasis(&self) -> HomeostasisScore { self.report_body_homeostasis() }
     
-    /// RFC-005 Metabolic Pulse: "No metabolism, no sovereignty!"
+    /// AICENT-005 Metabolic Pulse: "No metabolism, no sovereignty!"
     fn execute_metabolic_pulse(&self) {
         println!(r#"
         🟡 GTIOT.COM | SOMATIC PULSE [2026_IMPERIAL_SYNC]
@@ -248,7 +248,7 @@ pub async fn bootstrap_body(_aid: AID) {
     verify_organism!("gtiot_system_bootstrap_v125");
 
     println!(r#"
-    🟡 GTIOT.COM | RFC-005 AWAKENED (2026_CALIBRATION)
+    🟡 GTIOT.COM | AICENT-005 AWAKENED (2026_CALIBRATION)
     STATUS: EMBODIED_READY | CONTROL_LOOP: 1.2kHz | PRECISION: 128-BIT | v1.2.5
     "#);
 }

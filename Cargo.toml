@@ -3,7 +3,7 @@ name = "gtiot"
 version = "1.2.5-alpha"
 edition = "2021"
 authors = ["Aicent Stack Technical Committee <admin@aicent.com>"]
-description = "RFC-005: The Body Layer. Grand Tensor IoT for embodied edge execution and 128-bit 1.2kHz somatic control for the Aicent Stack 2026. Aligned with RFC-014 (PICSI)."
+description = "AICENT-005: The Body Layer. Grand Tensor IoT for embodied edge execution and 128-bit 1.2kHz somatic control for the Aicent Stack 2026. Aligned with AICENT-014 (PICSI)."
 license = "Apache-2.0"
 homepage = "http://gtiot.com"
 repository = "http://github.com/Aicent-Stack/gtiot"
@@ -13,7 +13,7 @@ repository = "http://github.com/Aicent-Stack/gtiot"
 # =========================================================================
 
 [dependencies]
-# THE SOVEREIGN LADDER: Somatic execution requires the genetic DNA of the Soul (RFC-000).
+# THE SOVEREIGN LADDER: Somatic execution requires the genetic DNA of the Soul (AICENT-000).
 # Binding 1.2kHz torque adjustments to verified Imperial AID identity v1.2.5.
 epoekie = { version = "1.2.5-alpha" }
 

@@ -1,5 +1,5 @@
 /*
- *  AICENT STACK - RFC-005: GTIOT Action Abstraction Layer (AAL)
+ *  AICENT STACK - AICENT-005: GTIOT Action Abstraction Layer (AAL)
  *  (C) 2026 Aicent Stack Technical Committee. All Rights Reserved.
  *
  *  "Where intent becomes torque. 128-bit kinematic mapping."
@@ -17,7 +17,7 @@ use crate::{KineticCommand, ActuatorState};
 // 1. AAL DATA STRUCTURES (The Somatic Translation)
 // =========================================================================
 
-/// RFC-005: AbstractAction_128
+/// AICENT-005: AbstractAction_128
 /// A 128-bit normalized representation of a physical movement goal.
 /// Designed for sub-microsecond translation into 1.2kHz motor instructions.
 #[derive(Debug, Clone, Serialize, Deserialize)]
@@ -52,7 +52,7 @@ impl ActionAbstractionEngine {
         }
     }
 
-    /// RFC-005: Collapse Intent to Torque.
+    /// AICENT-005: Collapse Intent to Torque.
     /// Translates a 128-bit abstract action into a concrete KineticCommand.
     /// [PERF] Optimized for 1.2kHz synchronous deployment (< 15us overhead).
     pub fn collapse_to_torque_128(
@@ -72,7 +72,7 @@ impl ActionAbstractionEngine {
         };
 
         // 2. Impedance Suture: Calculating K and B from Compliance
-        // Based on RFC-015 "Tenderness Calculus"
+        // Based on AICENT-015 "Tenderness Calculus"
         let stiffness_k = (1.0 - action.compliance_index_f64) * 500.0;
         let damping_b = action.compliance_index_f64 * 100.0;
 
@@ -91,7 +91,7 @@ impl ActionAbstractionEngine {
     }
 
     pub fn audit_somatic_standing_f64(&self, hs: HomeostasisScore) -> f64 {
-        // Correlates somatic efficiency with RFC-014 PICSI vision
+        // Correlates somatic efficiency with AICENT-014 PICSI vision
         hs.metabolic_efficiency * hs.picsi_resonance_idx
     }
 }

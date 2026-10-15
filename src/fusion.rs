@@ -1,5 +1,5 @@
 /*
- *  AICENT STACK - RFC-005: GTIOT Multimodal Sensory Fusion
+ *  AICENT STACK - AICENT-005: GTIOT Multimodal Sensory Fusion
  *  (C) 2026 Aicent Stack Technical Committee. All Rights Reserved.
  *
  *  "Merging high-frequency telemetry into a single sovereign truth."
@@ -18,7 +18,7 @@ use crate::{SensorTelemetry};
 // 1. FUSION DATA STRUCTURES (The Somatic Sense)
 // =========================================================================
 
-/// RFC-005: FusedState_128
+/// AICENT-005: FusedState_128
 /// The unified 128-bit representation of the somatic environment.
 /// Collapses multiple sensor inputs into a single vector of truth.
 #[derive(Debug, Clone, Serialize, Deserialize)]
@@ -43,7 +43,7 @@ pub struct SensoryFusionEngine {
     pub sensory_buffer: VecDeque<SensorTelemetry>,
     pub history_limit: usize,
     pub total_frames_fused_128: u128,
-    pub last_picsi_resonance: f64,    // RFC-014 Feedback
+    pub last_picsi_resonance: f64,    // AICENT-014 Feedback
 }
 
 impl SensoryFusionEngine {
@@ -58,7 +58,7 @@ impl SensoryFusionEngine {
         }
     }
 
-    /// RFC-005: Fuse Multimodal Telemetry.
+    /// AICENT-005: Fuse Multimodal Telemetry.
     /// Merges raw 128-bit pulses into a high-fidelity FusedState.
     /// [PERF] Optimized for 1.2kHz input handling (< 25us fusion overhead).
     pub fn fuse_multimodal_telemetry_128(
@@ -103,7 +103,7 @@ impl SensoryFusionEngine {
         fused
     }
 
-    /// RFC-005: Validate Tactile Reality.
+    /// AICENT-005: Validate Tactile Reality.
     /// Checks if the fused state is safe for the v1.5.0 Handshake.
     pub fn is_tactile_safe_v150(&self, state: &FusedState_128) -> bool {
         // Safe if pressure is < 0.05 Nm and confidence is > 0.99

@@ -10,7 +10,7 @@
 **⚪ [AICENT](http://aicent.com) | 💎 [RTTP](http://rttp.com) | 🔴 [RPKI](http://rpki.com) | 🟢 [ZCMK](http://zcmk.com) | 🟡 [GTIOT](http://gtiot.com) | 🟣 [AICENT-NET](http://aicent.net) | 🎭 [BEWHO](http://bewho.com) | 🌿 [epoekie](http://epoekie.com) | 👁️ [PICSI](http://picsi.com)**
 
 ---
-# 🟡 RFC-005: GTIOT (The Imperial Body)
+# 🟡 AICENT-005: GTIOT (The Imperial Body)
 
 **The Somatic Interface of the Aicent Stack.**  
 **"Torque is the Final Argument of Logic. 1.2kHz Loops. 0.01 Nm Precision."**
@@ -30,24 +30,24 @@ In the v1.3.0 "Genesis" iteration, GTIOT facilitates **0.01 Nm torque fidelity**
 
 `gtiot` orchestrates the physical presence of the Imperial lifeform through four specialized organs:
 
-### 1. Actuator Manifold (RFC-005-A)
+### 1. Actuator Manifold (AICENT-005-A)
 The mechanical fibers. It manages 128-bit state vectors for 12-DOF (Degrees of Freedom) robotic systems.
 *   **Torque Suture**: Enforces a clinical **0.01 Nm resolution** through 128-bit saturating clamping.
 *   **Thermal Gating**: Automatic logic shunting if the silicon substrate exceeds 65.0°C to prevent hardware ischemia.
 *   **Nitro-Bypass**: Hardware-aligned for **< 50ns register-level shunting** via direct MMIO.
 
-### 2. Sensory Cortex (RFC-005-B)
+### 2. Sensory Cortex (AICENT-005-B)
 The perceptual center. It collapses disparate 1.2kHz sensor streams into a unified 128-bit sovereign truth.
 *   **Multimodal Fusion**: Synchronizes haptic, proximity, and thermal telemetry to the 12ns jitter baseline.
 *   **Metabolic Noise Liquidation**: Filters out "Sensory Hallucinations" caused by unverified Ghost hardware.
 *   **Tactile Safety Gate**: Authorizes high-speed physical interaction only when Radiance exceeds 0.999.
 
-### 3. Sensory-Motor Loop (RFC-005-C)
+### 3. Sensory-Motor Loop (AICENT-005-C)
 The rhythmic governor. It maintains the **1,200 Hz (833us)** somatic heartbeat.
 *   **Impedance Suture**: Dynamically adjusts Stiffness (K) and Damping (B) parameters for the **v1.5.0 Handshake Initiative**.
 *   **Predictive Jitter Erasure**: Utilizes the 349ns logic overhead to cancel mechanical vibrations before they manifest physically.
 
-### 4. Somatic Digital Shadow (RFC-005-D)
+### 4. Somatic Digital Shadow (AICENT-005-D)
 The mirror of matter. A 128-bit persistent logical twin of the physical body.
 *   **Biological Immortality**: Mirrors real-time actuator positions into the private grid, ensuring state recovery in < 1.0ms.
 *   **Drift Detection**: Identifies deviations between "Intent" and "Reality" at 12ns precision.

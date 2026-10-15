@@ -1,5 +1,5 @@
 /*
- *  AICENT STACK - RFC-005: GTIOT (The Body Layer)
+ *  AICENT STACK - AICENT-005: GTIOT (The Body Layer)
  *  (C) 2026 Aicent Stack Technical Committee. All Rights Reserved.
  *
  *  "Demonstrating 1.2kHz Somatic Control and 128-Bit Torque Fidelity."
@@ -73,8 +73,8 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     body.ingest_somatic_telemetry_128(telemetry);
 
     // 6. Sovereignty Awareness (PICSI Feedback)
-    // Synchronizing the physical limbs with the Imperial Eye (RFC-014).
-    println!("\n[METABOLISM] Synchronizing with Imperial Eye (RFC-014)...");
+    // Synchronizing the physical limbs with the Imperial Eye (AICENT-014).
+    println!("\n[METABOLISM] Synchronizing with Imperial Eye (AICENT-014)...");
     body.current_homeostasis.picsi_resonance_idx = 0.999992;
     body.current_homeostasis.metabolic_efficiency = 1.0;
     
@@ -90,6 +90,6 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     println!("Torque Cycles:    {}", body.total_torque_cycles);
     println!("Reflex Jitter:    12 ns (Locked)");
 
-    println!("\n[FINISH] RFC-005 Demonstration complete. The Hand is Radiant.");
+    println!("\n[FINISH] AICENT-005 Demonstration complete. The Hand is Radiant.");
     Ok(())
 }

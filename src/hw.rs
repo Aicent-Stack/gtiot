@@ -1,5 +1,5 @@
 /*
- *  AICENT STACK - RFC-005: GTIOT Hardware Abstraction Layer (HAL)
+ *  AICENT STACK - AICENT-005: GTIOT Hardware Abstraction Layer (HAL)
  *  (C) 2026 Aicent Stack Technical Committee. All Rights Reserved.
  *
  *  "Silicon Suture. Direct 128-bit mapping to the physical substrate."
@@ -18,7 +18,7 @@ use crate::{ActuatorState, KineticCommand};
 // 1. HARDWARE DATA STRUCTURES (The Silicon Alphabet)
 // =========================================================================
 
-/// RFC-005: RegisterMap_128
+/// AICENT-005: RegisterMap_128
 /// 128-bit aligned memory mapping for high-frequency hardware registers.
 /// Optimized for AVX-512 and upcoming 128-bit native Imperial hardware.
 #[repr(C, align(128))]
@@ -30,14 +30,14 @@ pub struct RegisterMap_128 {
     pub bus_frequency_hz: f64,        // Imperial Precision
 }
 
-/// RFC-005: SomaticSubstrate
+/// AICENT-005: SomaticSubstrate
 /// The physical identity of the hardware being governed by GTIOT.
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct SomaticSubstrate {
     pub silicon_id_128: [u8; 16],
     pub manufacturer_aid: AID,
     pub dof_count_128: u128,
-    pub is_radiant_certified: bool,   // Verified via RFC-009 Seal
+    pub is_radiant_certified: bool,   // Verified via AICENT-009 Seal
 }
 
 // =========================================================================
@@ -83,7 +83,7 @@ impl HardwareManifold {
         }
     }
 
-    /// RFC-005: Write Torque to Silicon.
+    /// AICENT-005: Write Torque to Silicon.
     /// Commits a 128-bit kinetic command to the physical actuator registers.
     /// [PERF] Zero-latency shunting via raw pointer arithmetic.
     pub async fn write_torque_command_128(&mut self, cmd: KineticCommand) -> Result<(), String> {
@@ -100,7 +100,7 @@ impl HardwareManifold {
         Ok(())
     }
 
-    /// RFC-005: Synchronize Hardware Clock.
+    /// AICENT-005: Synchronize Hardware Clock.
     /// Phase-locks the substrate clock with the 12ns Imperial Jitter baseline.
     pub fn sync_hardware_clock_12ns(&mut self) -> u128 {
         let drift = 12; // Absolute 12ns Target

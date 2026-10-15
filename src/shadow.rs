@@ -1,5 +1,5 @@
 /*
- *  AICENT STACK - RFC-005: GTIOT Somatic Digital Shadow
+ *  AICENT STACK - AICENT-005: GTIOT Somatic Digital Shadow
  *  (C) 2026 Aicent Stack Technical Committee. All Rights Reserved.
  *
  *  "The Mirror of Matter. 128-bit state persistence in the Imperial Void."
@@ -20,7 +20,7 @@ use crate::{ActuatorState, FusedState_128};
 // 1. SHADOW DATA STRUCTURES (The Virtual Flesh)
 // =========================================================================
 
-/// RFC-005: ShadowState_128
+/// AICENT-005: ShadowState_128
 /// A high-fidelity virtual reflection of a physical actuator's 128-bit state.
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct ShadowState_128 {
@@ -31,7 +31,7 @@ pub struct ShadowState_128 {
     pub mirrored_at_ns_128: u128,     // 12ns jitter-aligned timestamp
 }
 
-/// RFC-005: SomaticMirror_128
+/// AICENT-005: SomaticMirror_128
 /// The total logical twin of the 12-DOF Imperial Body.
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct SomaticMirror_128 {
@@ -77,7 +77,7 @@ impl SomaticShadowEngine {
         }
     }
 
-    /// RFC-005: Update Somatic Shadow.
+    /// AICENT-005: Update Somatic Shadow.
     /// Mirrored the physical actuator states into the 128-bit virtual manifold.
     /// Non-Radiant nodes suffer a 10ms "Mirror Friction" (Persistence Penalty).
     pub async fn update_somatic_shadow_128(
@@ -152,7 +152,7 @@ impl DigitalTwinSuture for SomaticShadowEngine {
     }
 
     fn evaporate_to_void_128(&mut self) -> [u8; 32] {
-        println!("🌀 [SHADOW] 2026_ADMIN: Evaporating somatic state to RFC-015 SUNYA.");
+        println!("🌀 [SHADOW] 2026_ADMIN: Evaporating somatic state to AICENT-015 SUNYA.");
         // Logic Suture: Returns a 256-bit hash of the state for Void-persistence.
         [0x00; 32]
     }
