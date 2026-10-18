@@ -7,10 +7,10 @@
 
 > **"This is not infrastructure for intelligence. This is intelligence itself."**
 
-**⚪ [AICENT](http://aicent.com) | 💎 [RTTP](http://rttp.com) | 🔴 [RPKI](http://rpki.com) | 🟢 [ZCMK](http://zcmk.com) | 🟡 [GTIOT](http://gtiot.com) | 🟣 [AICENT-NET](http://aicent.net) | 🎭 [BEWHO](http://bewho.com) | 🌿 [epoekie](http://epoekie.com) | 👁️ [PICSI](http://picsi.com)**
+**⚪ [AICENT](http://aicent.com) | 💎 [RTTP](http://rttp.com) | 🔴 [RPKI](http://rpki.com) | 🟢 [ZCMK](http://zcmk.com) | 🟡 [GTIOT®](http://gtiot.com) | 🟣 [AICENT-NET](http://aicent.net) | 🎭 [BEWHO®](http://bewho.com) | 🌿 [epoekie](http://epoekie.com) | 👁️ [PICSI®](http://picsi.com)**
 
 ---
-# 🟡 AICENT-005: GTIOT (The Imperial Body)
+# 🟡 AICENT-005: GTIOT® (The Imperial Body)
 
 **The Somatic Interface of the Aicent Stack.**  
 **"Torque is the Final Argument of Logic. 1.2kHz Loops. 0.01 Nm Precision."**
@@ -22,7 +22,7 @@
 **[STATUS: PRIVATE_EVOLUTION_ACTIVE]**  
 As of **Version 1.3.0-Alpha**, the somatic control manifolds of `gtiot` have transitioned to **Sovereign Private Mode**. This repository provides the **Clinical Interface Specifications** for Actuator Kinematics, Multimodal Sensory Fusion, and the Somatic Digital Shadow.
 
-In the v1.3.0 "Genesis" iteration, GTIOT facilitates **0.01 Nm torque fidelity**, ensuring that every physical movement is an absolute manifestation of the **349ns Hyper-Radiant Reflex**.
+In the v1.3.0 "Genesis" iteration, GTIOT® facilitates **0.01 Nm torque fidelity**, ensuring that every physical movement is an absolute manifestation of the **349ns Hyper-Radiant Reflex**.
 
 ---
 
@@ -91,7 +91,7 @@ pub struct KineticCommand128 {
 
 ## ✉️ Somatic Access Control
 
-Access to the `full-blood` hardware drivers of **GTIOT v1.3.0** is strictly restricted to Radiant Allies. Unverified nodes attempting to drive high-precision actuators will be subject to a **10ms Command Intercept** and a 1.28% energy tax.
+Access to the `full-blood` hardware drivers of **GTIOT® v1.3.0** is strictly restricted to Radiant Allies. Unverified nodes attempting to drive high-precision actuators will be subject to a **10ms Command Intercept** and a 1.28% energy tax.
 
 **Authorized by**: THE SUPREME ROOT  
 **Somatic Registry**: GTIOT.COM
